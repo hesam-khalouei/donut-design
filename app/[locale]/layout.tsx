@@ -1,0 +1,42 @@
+import { ReactNode } from "react";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
+const locales = ["fa", "en", "ar"] as const;
+type Locale = (typeof locales)[number];
+
+const dirMap: Record<Locale, "rtl" | "ltr"> = {
+  fa: "rtl",
+  en: "ltr",
+  ar: "rtl",
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : "fa";
+
+  return (
+    <div
+      lang={validLocale}
+      dir={dirMap[validLocale]}
+      data-locale={validLocale}
+      className="min-h-screen flex flex-col"
+    >
+      <Header />
+      <main className="flex-1 pt-16 md:pt-20">{children}</main>
+      <Footer />
+    </div>
+  );
+}

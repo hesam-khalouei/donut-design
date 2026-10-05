@@ -1,0 +1,149 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import LanguageSwitcher from "./LanguageSwitcher";
+
+const navItems = [
+  { href: "/services", label: { fa: "خدمات", en: "Services", ar: "الخدمات" } },
+  { href: "/works", label: { fa: "نمونه‌کارها", en: "Work", ar: "أعمالنا" } },
+  {
+    href: "/case-studies",
+    label: { fa: "مطالعات موردی", en: "Case Studies", ar: "دراسات الحالة" },
+  },
+  { href: "/about", label: { fa: "درباره ما", en: "About", ar: "من نحن" } },
+  { href: "/blog", label: { fa: "بلاگ", en: "Blog", ar: "المدونة" } },
+];
+
+const ctaLabel = {
+  fa: "شروع پروژه",
+  en: "Start a project",
+  ar: "ابدأ مشروعك",
+};
+
+export default function Header() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const currentLocale = pathname.split("/")[1] || "fa";
+  const locale = ["fa", "en", "ar"].includes(currentLocale)
+    ? (currentLocale as "fa" | "en" | "ar")
+    : "fa";
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[var(--color-bg)]/80 backdrop-blur-lg border-b border-[var(--color-border)] shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <Container>
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link
+            href={`/${locale}`}
+            className="text-xl md:text-2xl font-black tracking-tight"
+          >
+            Donut<span className="text-[var(--color-primary)]">.</span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = pathname.includes(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={`/${locale}${item.href}`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-[var(--color-primary)] bg-[var(--color-primary-light)]"
+                      : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                  }`}
+                >
+                  {item.label[locale]}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <div className="hidden md:block">
+              <Button href={`/${locale}/contact`} size="sm">
+                {ctaLabel[locale]}
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--color-bg-alt)] transition-colors"
+              aria-label="Menu"
+            >
+              <div className="flex flex-col gap-1.5">
+                <span
+                  className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${
+                    mobileOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-[var(--color-text)] transition-opacity ${
+                    mobileOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-[var(--color-text)] transition-transform ${
+                    mobileOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+      </Container>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-[500px]" : "max-h-0"
+        }`}
+      >
+        <Container>
+          <nav className="py-6 flex flex-col gap-1 border-t border-[var(--color-border)]">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={`/${locale}${item.href}`}
+                className="px-4 py-3 rounded-[var(--radius-md)] text-base font-medium hover:bg-[var(--color-bg-alt)] transition-colors"
+              >
+                {item.label[locale]}
+              </Link>
+            ))}
+            <div className="mt-4">
+              <Button href={`/${locale}/contact`} className="w-full">
+                {ctaLabel[locale]}
+              </Button>
+            </div>
+          </nav>
+        </Container>
+      </div>
+    </header>
+  );
+}
