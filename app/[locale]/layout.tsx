@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 const locales = ["fa", "en", "ar"] as const;
 type Locale = (typeof locales)[number];
@@ -32,6 +33,7 @@ export default async function LocaleLayout({
 
   return (
     <ThemeProvider>
+      <LoadingScreen />
       <CustomCursor />
       <div
         lang={validLocale}
