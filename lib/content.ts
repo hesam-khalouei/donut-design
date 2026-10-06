@@ -114,3 +114,11 @@ export async function getPost(slug: string): Promise<UnifiedPost | null> {
 
   return null;
 }
+
+import { getWPSections } from "./wordpress";
+
+// ---------- Sections ----------
+export async function getPageSections(slug: string): Promise<any[]> {
+  const sections = await getWPSections(slug);
+  return sections || [];
+}

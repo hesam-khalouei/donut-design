@@ -164,26 +164,22 @@ const translations = {
       {
         icon: "🎯",
         title: "مشاريع حقيقية",
-        description:
-          "تعمل على منتجات يستخدمها الملايين — وليس فقط تصميم نظري.",
+        description: "تعمل على منتجات يستخدمها الملايين — وليس فقط تصميم نظري.",
       },
       {
         icon: "📈",
         title: "نمو مهني",
-        description:
-          "بيئة تعلمك وتتحداك وتسمح لك بالنمو — بدون إدارة دقيقة.",
+        description: "بيئة تعلمك وتتحداك وتسمح لك بالنمو — بدون إدارة دقيقة.",
       },
       {
         icon: "🌍",
         title: "عن بعد ومرونة",
-        description:
-          "نهتم بالنتائج، لا بالساعات. عمل عن بعد وجداول مرنة.",
+        description: "نهتم بالنتائج، لا بالساعات. عمل عن بعد وجداول مرنة.",
       },
       {
         icon: "🤝",
         title: "فريق صغير، تأثير كبير",
-        description:
-          "في فريق صغير، عملك يُرى حقًا ويكون لك تأثير مباشر.",
+        description: "في فريق صغير، عملك يُرى حقًا ويكون لك تأثير مباشر.",
       },
     ],
     positionsTitle: "الوظائف المتاحة",
@@ -217,7 +213,7 @@ const translations = {
         type: "دوام كامل",
         location: "طهران / عن بعد",
         description:
-          "تنفيذ التصاميم باستخدام Next.js و Tailwind CSS و Framer Motion مع التركيز على الجودة.",
+          "تنفيذ التصاميم باستخدام Next.js و Tailwind CSS و Framer Motion.",
         skills: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
       },
     ],
@@ -239,23 +235,23 @@ export default function CareersPage({ locale }: { locale: string }) {
   return (
     <main>
       {/* Hero */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16"
+            className="max-w-3xl mb-12 md:mb-16"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)] leading-relaxed">
               {t.description}
             </p>
           </motion.div>
@@ -266,12 +262,12 @@ export default function CareersPage({ locale }: { locale: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-20"
+            className="mb-14 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.whyTitle}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
               {t.why.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -279,10 +275,14 @@ export default function CareersPage({ locale }: { locale: string }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="p-8 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)]"
+                  className="p-6 md:p-8 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)]"
                 >
-                  <div className="text-3xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <div className="text-3xl md:text-4xl mb-3 md:mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold mb-2">
+                    {item.title}
+                  </h3>
                   <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
                     {item.description}
                   </p>
@@ -298,12 +298,12 @@ export default function CareersPage({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.positionsTitle}
             </h2>
 
             {t.positions.length === 0 ? (
-              <p className="text-center text-[var(--color-text-muted)] py-20">
+              <p className="text-center text-[var(--color-text-muted)] py-16 md:py-20">
                 {t.positionsEmpty}
               </p>
             ) : (
@@ -315,22 +315,22 @@ export default function CareersPage({ locale }: { locale: string }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: idx * 0.08 }}
-                    className="group p-6 md:p-8 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--section-card-bg)] hover:border-[var(--color-primary)] transition-all duration-300"
+                    className="group p-5 md:p-8 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--section-card-bg)] hover:border-[var(--color-primary)] transition-all duration-300"
                   >
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-3 mb-3">
-                          <h3 className="text-xl md:text-2xl font-bold group-hover:text-[var(--color-primary)] transition-colors">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5 md:gap-6">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-3">
+                          <h3 className="text-lg md:text-2xl font-bold group-hover:text-[var(--color-primary)] transition-colors">
                             {position.title}
                           </h3>
-                          <span className="px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold">
+                          <span className="px-2.5 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-[10px] md:text-xs font-bold whitespace-nowrap">
                             {position.type}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-[var(--color-text-muted)] mb-4">
+                        <div className="flex items-center gap-2 text-xs md:text-sm text-[var(--color-text-muted)] mb-3 md:mb-4">
                           <svg
-                            className="w-4 h-4"
+                            className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -351,15 +351,15 @@ export default function CareersPage({ locale }: { locale: string }) {
                           {position.location}
                         </div>
 
-                        <p className="text-[var(--color-text-muted)] leading-relaxed mb-4">
+                        <p className="text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed mb-4">
                           {position.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1.5 md:gap-2">
                           {position.skills.map((skill) => (
                             <span
                               key={skill}
-                              className="px-3 py-1 rounded-full bg-[var(--color-bg-alt)] text-xs font-medium text-[var(--color-text-muted)]"
+                              className="px-2.5 py-1 rounded-full bg-[var(--color-bg-alt)] text-[10px] md:text-xs font-medium text-[var(--color-text-muted)]"
                             >
                               {skill}
                             </span>
@@ -373,6 +373,7 @@ export default function CareersPage({ locale }: { locale: string }) {
                             position.title
                           )}`}
                           variant="outline"
+                          className="w-full md:w-auto"
                         >
                           {t.applyNow}
                           <svg
@@ -403,12 +404,12 @@ export default function CareersPage({ locale }: { locale: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto mt-16 p-8 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
+            className="max-w-3xl mx-auto mt-12 md:mt-16 p-6 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-black mb-3">
+            <h2 className="text-xl md:text-3xl font-black mb-2 md:mb-3">
               {t.noPositionTitle}
             </h2>
-            <p className="text-[var(--color-text-muted)] mb-6">
+            <p className="text-sm md:text-base text-[var(--color-text-muted)] mb-5 md:mb-6">
               {t.noPositionDesc}
             </p>
             <Button href={`/${validLocale}/contact`}>{t.sendResume}</Button>

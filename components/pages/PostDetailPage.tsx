@@ -130,7 +130,9 @@ export default function PostDetailPage({
       <main className="min-h-screen flex items-center justify-center">
         <Container>
           <div className="text-center">
-            <h1 className="text-4xl font-black mb-6">{t.notFound}</h1>
+            <h1 className="text-2xl md:text-4xl font-black mb-6">
+              {t.notFound}
+            </h1>
             <Button href={`/${validLocale}/blog`}>{t.backHome}</Button>
           </div>
         </Container>
@@ -141,8 +143,8 @@ export default function PostDetailPage({
   return (
     <main>
       {/* Hero */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
@@ -153,7 +155,7 @@ export default function PostDetailPage({
           >
             <Link
               href={`/${validLocale}/blog`}
-              className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors mb-6 md:mb-8"
             >
               <svg
                 className="w-4 h-4"
@@ -171,24 +173,26 @@ export default function PostDetailPage({
               {t.back}
             </Link>
 
-            <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl font-black mb-5 md:mb-6">
               {post.title}
             </h1>
 
             {post.excerpt && (
-              <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed mb-8">
+              <p className="text-base md:text-xl text-[var(--color-text-muted)] leading-relaxed mb-6 md:mb-8">
                 {post.excerpt}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-[var(--color-border)]">
+            <div className="flex flex-wrap items-center gap-4 pt-5 md:pt-6 border-t border-[var(--color-border)]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center font-bold text-sm">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center font-bold text-sm shrink-0">
                   {post.author.initial}
                 </div>
-                <div>
-                  <div className="font-bold text-sm">{post.author.name}</div>
-                  <div className="text-xs text-[var(--color-text-muted)]">
+                <div className="min-w-0">
+                  <div className="font-bold text-sm truncate">
+                    {post.author.name}
+                  </div>
+                  <div className="text-xs text-[var(--color-text-muted)] truncate">
                     {formatDate(post.date, validLocale)} · {post.readTime}{" "}
                     {t.readTime}
                   </div>
@@ -200,17 +204,17 @@ export default function PostDetailPage({
       </section>
 
       {/* Cover */}
-      <section className="pb-16">
+      <section className="pb-10 md:pb-16">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className={`max-w-5xl mx-auto aspect-[16/9] rounded-[var(--radius-xl)] bg-gradient-to-br ${post.coverColor} relative overflow-hidden`}
+            className={`max-w-5xl mx-auto aspect-[16/10] md:aspect-[16/9] rounded-[var(--radius-lg)] md:rounded-[var(--radius-xl)] bg-gradient-to-br ${post.coverColor} relative overflow-hidden`}
           >
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center p-6">
               <span
-                className="text-6xl md:text-8xl font-black opacity-30 px-8 text-center leading-tight"
+                className="text-4xl sm:text-5xl md:text-8xl font-black opacity-40 px-6 text-center leading-tight truncate max-w-full"
                 style={{ color: post.coverAccent }}
               >
                 {post.title}
@@ -221,7 +225,7 @@ export default function PostDetailPage({
       </section>
 
       {/* Content */}
-      <section className="pb-20">
+      <section className="pb-16 md:pb-20">
         <Container>
           <motion.article
             initial={{ opacity: 0, y: 30 }}
@@ -233,8 +237,8 @@ export default function PostDetailPage({
 
           {/* Tags */}
           {post.tags.length > 0 && (
-            <div className="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--color-border)]">
-              <div className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
+            <div className="max-w-3xl mx-auto mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[var(--color-border)]">
+              <div className="text-xs md:text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
                 {t.tags}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -242,7 +246,7 @@ export default function PostDetailPage({
                   <Link
                     key={tag}
                     href={`/${validLocale}/blog/tag/${tag}`}
-                    className="px-3 py-1.5 rounded-full bg-[var(--color-bg-alt)] text-sm text-[var(--color-text-muted)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                    className="px-3 py-1.5 rounded-full bg-[var(--color-bg-alt)] text-xs md:text-sm text-[var(--color-text-muted)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
                   >
                     #{tag}
                   </Link>

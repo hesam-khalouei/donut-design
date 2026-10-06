@@ -141,22 +141,22 @@ const translations = {
       {
         question: "ما هي خدمات دونات ديزاين؟",
         answer:
-          "نقدم تصميم المنتج، أنظمة التصميم، أبحاث المستخدم، تحسين تجربة المستخدم، process mining، واستشارات المنتج. نركز على منتجات B2B و B2C المعقدة في التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق.",
+          "نقدم تصميم المنتج، أنظمة التصميم، أبحاث المستخدم، تحسين تجربة المستخدم، process mining، واستشارات المنتج.",
       },
       {
         question: "ما هي عملية عملكم؟",
         answer:
-          "نبدأ بجلسة اكتشاف لفهم احتياجاتك وأهدافك. بعد تحديد المشكلة، ندخل مرحلة التصميم — من الإطارات السلكية إلى الدقة العالية. نكرر في جميع المراحل مع اختبار المستخدم والملاحظات.",
+          "نبدأ بجلسة اكتشاف لفهم احتياجاتك وأهدافك. بعد تحديد المشكلة، ندخل مرحلة التصميم — من الإطارات السلكية إلى الدقة العالية.",
       },
       {
         question: "كم يستغرق المشروع النموذجي؟",
         answer:
-          "يعتمد على نطاق المشروع. إعادة التصميم الكاملة عادةً تستغرق 3-6 أشهر. المشاريع الأصغر يمكن أن تستغرق 2-4 أسابيع. سنحدد الجدول الزمني الدقيق معًا.",
+          "يعتمد على نطاق المشروع. إعادة التصميم الكاملة عادةً تستغرق 3-6 أشهر. المشاريع الأصغر يمكن أن تستغرق 2-4 أسابيع.",
       },
       {
         question: "كم تكلفة المشروع؟",
         answer:
-          "تعتمد التكلفة على النطاق والتعقيد والمدة. لدينا حزم مختلفة للشركات الناشئة والشركات المتوسطة والمؤسسات الكبيرة. للحصول على عرض دقيق، اتصل بنا.",
+          "تعتمد التكلفة على النطاق والتعقيد والمدة. لدينا حزم مختلفة للشركات الناشئة والشركات المتوسطة والمؤسسات الكبيرة.",
       },
       {
         question: "ما هي الأدوات التي تستخدمونها؟",
@@ -166,12 +166,12 @@ const translations = {
       {
         question: "هل تقدمون الدعم بعد التسليم؟",
         answer:
-          "نعم. بعد تسليم التصميم، نبقى معك خلال التنفيذ — من الإجابة على أسئلة المطورين إلى مراجعة المنتج النهائي. كما نقدم دعمًا مستمرًا.",
+          "نعم. بعد تسليم التصميم، نبقى معك خلال التنفيذ — من الإجابة على أسئلة المطورين إلى مراجعة المنتج النهائي.",
       },
       {
         question: "كيف أبدأ مشروعًا؟",
         answer:
-          "فقط أرسل لنا رسالة عبر صفحة الاتصال. صف مشروعك ونطاقه والجدول الزمني المطلوب. سنتواصل معك خلال 24 ساعة.",
+          "فقط أرسل لنا رسالة عبر صفحة الاتصال. صف مشروعك ونطاقه والجدول الزمني المطلوب.",
       },
       {
         question: "ما هي المجالات التي لديكم خبرة فيها؟",
@@ -186,7 +186,7 @@ const translations = {
       {
         question: "ما هو نظام التصميم بالضبط ولماذا يهم؟",
         answer:
-          "نظام التصميم هو مكتبة من المكونات والرموز وقواعد التصميم التي توحد الفريق. في EBCOM و ITSaaz، بنينا أنظمة تصميم قللت وقت التسليم بنسبة 30% وزادت كفاءة التصميم بنسبة 40%.",
+          "نظام التصميم هو مكتبة من المكونات والرموز وقواعد التصميم التي توحد الفريق.",
       },
     ],
   },
@@ -202,23 +202,23 @@ export default function FAQPage({ locale }: { locale: string }) {
 
   return (
     <main>
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16"
+            className="max-w-3xl mb-10 md:mb-16"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)] leading-relaxed">
               {t.description}
             </p>
           </motion.div>
@@ -243,18 +243,18 @@ export default function FAQPage({ locale }: { locale: string }) {
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
-                      className="w-full flex items-center justify-between gap-6 p-6 md:p-8 text-left rtl:text-right"
+                      className="w-full flex items-center justify-between gap-4 md:gap-6 p-5 md:p-8 text-left rtl:text-right"
                     >
-                      <span className="text-lg md:text-xl font-bold leading-snug">
+                      <span className="text-base md:text-xl font-bold leading-snug">
                         {faq.question}
                       </span>
                       <motion.div
                         animate={{ rotate: isOpen ? 45 : 0 }}
                         transition={{ duration: 0.3 }}
-                        className="shrink-0 w-8 h-8 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center"
+                        className="shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center"
                       >
                         <svg
-                          className="w-4 h-4"
+                          className="w-3.5 h-3.5 md:w-4 md:h-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -275,12 +275,15 @@ export default function FAQPage({ locale }: { locale: string }) {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.3,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
+                          <div className="px-5 md:px-8 pb-5 md:pb-8 pt-0">
                             <div className="pt-4 border-t border-[var(--color-border)]">
-                              <p className="text-[var(--color-text-muted)] leading-relaxed">
+                              <p className="text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed">
                                 {faq.answer}
                               </p>
                             </div>
@@ -299,12 +302,12 @@ export default function FAQPage({ locale }: { locale: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto mt-16 p-8 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
+            className="max-w-3xl mx-auto mt-12 md:mt-16 p-6 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-black mb-3">
+            <h2 className="text-xl md:text-3xl font-black mb-2 md:mb-3">
               {t.cantFind}
             </h2>
-            <p className="text-[var(--color-text-muted)] mb-6">
+            <p className="text-sm md:text-base text-[var(--color-text-muted)] mb-5 md:mb-6">
               {t.cantFindDesc}
             </p>
             <Button href={`/${validLocale}/contact`}>{t.contactCta}</Button>

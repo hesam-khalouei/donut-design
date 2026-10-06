@@ -62,3 +62,36 @@ export function decodeHTMLEntities(text: string): string {
     .replace(/&#8217;/g, "'")
     .replace(/&#8211;/g, "–");
 }
+
+// ---------- Pages & Sections ----------
+export interface WPPage {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  acf?: {
+    page_sections?: any[];
+  };
+}
+
+export async function getWPPageBySlug(slug: string): Promise<WPPage | null> {
+  try {
+    const res = await fetch(
+      `${WP_API_URL}/pages?slug=${slug}&_fields=id,slug,title,acf`,
+      { next: { revalidate: 60 } }
+    );
+
+    if (!res.ok) return null;
+
+    const pages = (await res.json()) as WPPage[];
+    return pages.length > 0 ? pages[0] : null;
+  } catch (error) {
+    console.warn("WordPress fetch failed:", error);
+    return null;
+  }
+}
+
+export async function getWPSections(slug: string): Promise<any[] | null> {
+  const page = await getWPPageBySlug(slug);
+  if (!page?.acf?.page_sections) return null;
+  return page.acf.page_sections;
+}

@@ -3,148 +3,128 @@
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
+import type { TestimonialsSection } from "@/types/sections";
 
 const translations = {
   fa: {
     label: "نظر مشتری‌ها",
-    title: "چی می‌گن درباره ما",
-    testimonials: [
-      {
-        quote:
-          "تیم دونات دیزاین فراتر از انتظار ما عمل کرد. طراحی محصول ما رو از یه ابزار ساده به یه تجربه لذت‌بخش تبدیل کرد.",
-        name: "سارا محمدی",
-        role: "مدیر محصول، فین‌تک",
-        initials: "س‌م",
-      },
-      {
-        quote:
-          "دیزاین سیستمی که ساختن، کل فرایند توسعه ما رو متحول کرد. زمان handoff حداقل ۳۰٪ کاهش پیدا کرد.",
-        name: "علی رضایی",
-        role: "مدیر فنی، SaaS",
-        initials: "ع‌ر",
-      },
-      {
-        quote:
-          "دقت و تعهدشون به نتیجه، فوق‌العاده بود. محصول ما بعد از redesign، ۲۵٪ بهبود در task completion داشت.",
-        name: "مریم کریمی",
-        role: "بنیان‌گذار، مارکت‌پلیس",
-        initials: "م‌ک",
-      },
+    title: "چی می‌گن",
+    items: [
+      { quote: "همکاری با دونات دیزاین تجربه ما رو متحول کرد.", name: "علی رضایی", role: "مدیر محصول، فین‌تک", initial: "ع" },
+      { quote: "دقت، تعهد و خلاقیتی که توی این تیم دیدم، کم‌نظیر بود.", name: "سارا محمدی", role: "بنیان‌گذار، استارتاپ", initial: "س" },
+      { quote: "درک عمیقشون از UX فوق‌العاده بود.", name: "محمد کریمی", role: "CTO، لجستیک", initial: "م" },
     ],
   },
   en: {
     label: "Testimonials",
-    title: "What clients say",
-    testimonials: [
-      {
-        quote:
-          "Donut Design team exceeded our expectations. They transformed our product from a simple tool to a delightful experience.",
-        name: "Sara Mohammadi",
-        role: "Product Manager, FinTech",
-        initials: "SM",
-      },
-      {
-        quote:
-          "The design system they built transformed our entire development process. Handoff time dropped by at least 30%.",
-        name: "Ali Rezaei",
-        role: "Engineering Manager, SaaS",
-        initials: "AR",
-      },
-      {
-        quote:
-          "Their precision and commitment to results was remarkable. Our product saw 25% improvement in task completion after the redesign.",
-        name: "Maryam Karimi",
-        role: "Founder, Marketplace",
-        initials: "MK",
-      },
+    title: "What they say",
+    items: [
+      { quote: "Working with Donut Design transformed our experience.", name: "Ali Rezaei", role: "Product Manager, FinTech", initial: "A" },
+      { quote: "The precision and creativity I saw was unmatched.", name: "Sara Mohammadi", role: "Founder, Startup", initial: "S" },
+      { quote: "Their deep understanding of UX was remarkable.", name: "Mohammad Karimi", role: "CTO, Logistics", initial: "M" },
     ],
   },
   ar: {
-    label: "آراء العملاء",
-    title: "ماذا يقول العملاء",
-    testimonials: [
-      {
-        quote:
-          "تجاوز فريق دونات ديزاين توقعاتنا. حولوا منتجنا من أداة بسيطة إلى تجربة ممتعة.",
-        name: "سارة محمدي",
-        role: "مديرة المنتج، التكنولوجيا المالية",
-        initials: "س‌م",
-      },
-      {
-        quote:
-          "نظام التصميم الذي بنوه غير عملية التطوير بأكملها. انخفض وقت التسليم بنسبة 30٪ على الأقل.",
-        name: "علي رضائي",
-        role: "مدير الهندسة، SaaS",
-        initials: "ع‌ر",
-      },
-      {
-        quote:
-          "دقتهم والتزامهم بالنتائج كانا رائعين. شهد منتجنا تحسنًا بنسبة 25٪ بعد إعادة التصميم.",
-        name: "مريم كريمي",
-        role: "مؤسسة، السوق",
-        initials: "م‌ك",
-      },
+    label: "شهادات",
+    title: "ماذا يقولون",
+    items: [
+      { quote: "العمل مع دونات ديزاين غيّر تجربتنا.", name: "علي رضائي", role: "مدير المنتج", initial: "ع" },
+      { quote: "الدقة والإبداع كان لا مثيل له.", name: "سارة محمدي", role: "مؤسسة", initial: "س" },
+      { quote: "فهمهم العميق لتجربة المستخدم كان رائعًا.", name: "محمد كريمي", role: "المدير التقني", initial: "م" },
     ],
   },
 };
 
-export default function Testimonials() {
+function normalizeTestimonialsData(
+  data: TestimonialsSection | undefined,
+  locale: "fa" | "en" | "ar"
+) {
+  const fallback = translations[locale];
+  if (!data) return fallback;
+  return {
+    label: data.label || fallback.label,
+    title: data.title || fallback.title,
+    items:
+      data.items && data.items.length > 0
+        ? data.items.map((i) => ({
+            quote: i.quote,
+            name: i.name,
+            role: i.role,
+            initial: i.initial,
+          }))
+        : fallback.items,
+  };
+}
+
+interface TestimonialsProps {
+  data?: TestimonialsSection;
+  locale?: string;
+}
+
+export default function Testimonials({
+  data,
+  locale: propLocale,
+}: TestimonialsProps) {
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1] || "fa";
-  const locale = ["fa", "en", "ar"].includes(currentLocale)
-    ? (currentLocale as "fa" | "en" | "ar")
-    : "fa";
-  const t = translations[locale];
+  const locale = (propLocale ||
+    (["fa", "en", "ar"].includes(currentLocale) ? currentLocale : "fa")) as
+    | "fa"
+    | "en"
+    | "ar";
+
+  const t = normalizeTestimonialsData(data, locale);
 
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg-alt)]">
+    <section className="py-16 md:py-32 bg-[var(--color-bg-dark)] text-white relative overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[var(--color-primary)] opacity-10 blur-[120px] rounded-full pointer-events-none" />
+
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-16"
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-10 md:mb-16"
         >
-          <span className="text-sm font-medium text-[var(--color-primary)] uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
             {t.label}
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mt-3 leading-tight">
+          <h2 className="text-3xl leading-tight sm:text-4xl md:text-6xl font-black">
             {t.title}
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {t.testimonials.map((testimonial, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          {t.items.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-[var(--color-bg)] rounded-[var(--radius-lg)] p-8 border border-[var(--color-border)] flex flex-col"
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="relative p-6 md:p-8 rounded-[var(--radius-lg)] bg-white/[0.03] border border-white/10 hover:border-[var(--color-primary)]/50 transition-colors duration-500"
             >
-              {/* Quote mark */}
               <svg
-                className="w-10 h-10 text-[var(--color-primary)] mb-4 opacity-40"
+                className="w-7 h-7 md:w-8 md:h-8 text-[var(--color-primary)] mb-4 md:mb-5 opacity-60"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
               </svg>
 
-              <p className="text-[var(--color-text)] leading-relaxed mb-6 flex-1">
-                {testimonial.quote}
+              <p className="text-white/80 leading-relaxed mb-5 md:mb-6 text-sm md:text-base">
+                "{item.quote}"
               </p>
 
-              <div className="flex items-center gap-3 pt-6 border-t border-[var(--color-border)]">
-                <div className="w-12 h-12 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center font-bold text-sm">
-                  {testimonial.initials}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-primary)] flex items-center justify-center text-sm font-bold shrink-0">
+                  {item.initial}
                 </div>
-                <div>
-                  <div className="font-bold text-sm">{testimonial.name}</div>
-                  <div className="text-xs text-[var(--color-text-muted)]">
-                    {testimonial.role}
+                <div className="min-w-0">
+                  <div className="font-bold text-sm truncate">{item.name}</div>
+                  <div className="text-xs text-white/50 truncate">
+                    {item.role}
                   </div>
                 </div>
               </div>

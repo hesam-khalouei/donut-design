@@ -12,11 +12,9 @@ const translations = {
     title: "دونات دیزاین",
     description:
       "آژانس طراحی محصولات دیجیتال با تمرکز بر تجربه کاربری و دیزاین سیستم — ساخته‌شده توسط امیر حسام خالویی.",
-
     storyTitle: "داستان ما",
     story:
       "دونات دیزاین از یه ایده ساده شروع شد: طراحی محصول باید ساده، کاربردی و قابل اندازه‌گیری باشه. بعد از بیش از ۷ سال کار در حوزه‌های فین‌تک، SaaS، لجستیک و مارکت‌پلیس — از شرکت‌هایی مثل EBCOM، Postex، Vardast و PDN — تصمیم گرفتیم این تجربه رو در قالب یه آژانس مستقل ارائه بدیم. امروز با افتخار با تیم‌های مختلف همکاری می‌کنیم و محصولاتی می‌سازیم که میلیون‌ها کاربر ازشون استفاده می‌کنن.",
-
     statsTitle: "در یک نگاه",
     stats: [
       { value: "+۷", label: "سال تجربه" },
@@ -24,7 +22,6 @@ const translations = {
       { value: "۲", label: "دیزاین سیستم" },
       { value: "۶", label: "حوزه تخصصی" },
     ],
-
     valuesTitle: "ارزش‌های ما",
     values: [
       {
@@ -52,11 +49,9 @@ const translations = {
           "سریع حرکت می‌کنیم ولی هیچ‌وقت کیفیت رو فدا نمی‌کنیم. دیزاین سیستم‌ها به ما اجازه می‌دن هر دو رو داشته باشیم.",
       },
     ],
-
     timelineTitle: "مسیر حرفه‌ای",
     timelineSubtitle:
       "بیش از ۷ سال تجربه در طراحی محصولات دیجیتال، از استارتاپ تا سازمان‌های بزرگ.",
-
     teamTitle: "تیم ما",
     team: [
       {
@@ -68,27 +63,13 @@ const translations = {
         dribbble: "https://dribbble.com/hesam_khalouei",
       },
     ],
-
     awardsTitle: "افتخارات و مدارک",
     awards: [
-      {
-        title: "Google UI/UX Design Certification",
-        year: "2020",
-      },
-      {
-        title: "User Research Course — Coursera",
-        year: "2020",
-      },
-      {
-        title: "UI/UX Design Specialist — 7Learn",
-        year: "2017-2018",
-      },
-      {
-        title: "Product Manager Course — دانشگاه شریف",
-        year: "2022-2023",
-      },
+      { title: "Google UI/UX Design Certification", year: "2020" },
+      { title: "User Research Course — Coursera", year: "2020" },
+      { title: "UI/UX Design Specialist — 7Learn", year: "2017-2018" },
+      { title: "Product Manager Course — دانشگاه شریف", year: "2022-2023" },
     ],
-
     domainsTitle: "حوزه‌های تخصصی",
     domains: [
       { name: "FinTech", name_fa: "فین‌تک", color: "#3B82F6" },
@@ -104,11 +85,9 @@ const translations = {
     title: "Donut Design",
     description:
       "Digital product design agency focused on UX and design systems — founded by Amir Hesam Khalouei.",
-
     storyTitle: "Our story",
     story:
       "Donut Design started with a simple idea: product design should be simple, functional, and measurable. After 7+ years working in FinTech, SaaS, Logistics, and Marketplace — at companies like EBCOM, Postex, Vardast, and PDN — we decided to bring this experience into an independent agency. Today, we proudly work with various teams and build products used by millions.",
-
     statsTitle: "At a glance",
     stats: [
       { value: "7+", label: "Years Experience" },
@@ -116,7 +95,6 @@ const translations = {
       { value: "2", label: "Design Systems" },
       { value: "6", label: "Expertise Areas" },
     ],
-
     valuesTitle: "Our values",
     values: [
       {
@@ -144,11 +122,9 @@ const translations = {
           "We move fast but never compromise on quality. Design systems let us have both.",
       },
     ],
-
     timelineTitle: "Career Path",
     timelineSubtitle:
       "7+ years of experience designing digital products, from startups to large organizations.",
-
     teamTitle: "Our team",
     team: [
       {
@@ -160,27 +136,13 @@ const translations = {
         dribbble: "https://dribbble.com/hesam_khalouei",
       },
     ],
-
     awardsTitle: "Recognition & Certifications",
     awards: [
-      {
-        title: "Google UI/UX Design Certification",
-        year: "2020",
-      },
-      {
-        title: "User Research Course — Coursera",
-        year: "2020",
-      },
-      {
-        title: "UI/UX Design Specialist — 7Learn",
-        year: "2017-2018",
-      },
-      {
-        title: "Product Manager Course — Sharif University",
-        year: "2022-2023",
-      },
+      { title: "Google UI/UX Design Certification", year: "2020" },
+      { title: "User Research Course — Coursera", year: "2020" },
+      { title: "UI/UX Design Specialist — 7Learn", year: "2017-2018" },
+      { title: "Product Manager Course — Sharif University", year: "2022-2023" },
     ],
-
     domainsTitle: "Expertise areas",
     domains: [
       { name: "FinTech", name_fa: "FinTech", color: "#3B82F6" },
@@ -196,11 +158,9 @@ const translations = {
     title: "دونات ديزاين",
     description:
       "وكالة تصميم منتجات رقمية تركز على تجربة المستخدم وأنظمة التصميم — أسسها أمير حسام خالوي.",
-
     storyTitle: "قصتنا",
     story:
-      "بدأت دونات ديزاين بفكرة بسيطة: يجب أن يكون تصميم المنتج بسيطًا وعمليًا وقابلًا للقياس. بعد أكثر من 7 سنوات من العمل في التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق — في شركات مثل EBCOM و Postex و Vardast و PDN — قررنا تقديم هذه الخبرة في وكالة مستقلة. اليوم نعمل بفخر مع فرق مختلفة ونبني منتجات يستخدمها الملايين.",
-
+      "بدأت دونات ديزاين بفكرة بسيطة: يجب أن يكون تصميم المنتج بسيطًا وعمليًا وقابلًا للقياس. بعد أكثر من 7 سنوات من العمل في التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق — في شركات مثل EBCOM و Postex و Vardast و PDN — قررنا تقديم هذه الخبرة في وكالة مستقلة.",
     statsTitle: "نظرة سريعة",
     stats: [
       { value: "+7", label: "سنوات خبرة" },
@@ -208,20 +168,19 @@ const translations = {
       { value: "2", label: "نظام تصميم" },
       { value: "6", label: "مجالات التخصص" },
     ],
-
     valuesTitle: "قيمنا",
     values: [
       {
         icon: "🎯",
         title: "التركيز على النتائج",
         description:
-          "التصميم الجميل ليس كافيًا. نحن ملتزمون بنتائج قابلة للقياس — مثل تحسين الكفاءة بنسبة 40% أو تقليل وقت التسليم بنسبة 30%.",
+          "التصميم الجميل ليس كافيًا. نحن ملتزمون بنتائج قابلة للقياس.",
       },
       {
         icon: "🔬",
         title: "مبني على البيانات",
         description:
-          "قراراتنا مبنية على أبحاث المستخدم واختبار قابلية الاستخدام والبيانات السلوكية — لا التخمين.",
+          "قراراتنا مبنية على أبحاث المستخدم واختبار قابلية الاستخدام والبيانات السلوكية.",
       },
       {
         icon: "🤝",
@@ -236,43 +195,27 @@ const translations = {
           "نتحرك بسرعة لكن لا نتنازل عن الجودة. أنظمة التصميم تتيح لنا الحصول على كليهما.",
       },
     ],
-
     timelineTitle: "المسار المهني",
     timelineSubtitle:
       "أكثر من 7 سنوات من الخبرة في تصميم المنتجات الرقمية، من الشركات الناشئة إلى المؤسسات الكبيرة.",
-
     teamTitle: "فريقنا",
     team: [
       {
         name: "أمير حسام خالوي",
         role: "المؤسس ومدير التصميم",
-        bio: "أكثر من 7 سنوات خبرة في تصميم المنتجات الرقمية في التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق. متخصص في أنظمة التصميم وتبسيط سير العمل المعقد.",
+        bio: "أكثر من 7 سنوات خبرة في تصميم المنتجات الرقمية في التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق.",
         initial: "أ",
         linkedin: "https://linkedin.com/in/hesam_khalouei",
         dribbble: "https://dribbble.com/hesam_khalouei",
       },
     ],
-
     awardsTitle: "التقديرات والشهادات",
     awards: [
-      {
-        title: "شهادة Google UI/UX Design",
-        year: "2020",
-      },
-      {
-        title: "دورة User Research — Coursera",
-        year: "2020",
-      },
-      {
-        title: "UI/UX Design Specialist — 7Learn",
-        year: "2017-2018",
-      },
-      {
-        title: "دورة Product Manager — جامعة شريف",
-        year: "2022-2023",
-      },
+      { title: "شهادة Google UI/UX Design", year: "2020" },
+      { title: "دورة User Research — Coursera", year: "2020" },
+      { title: "UI/UX Design Specialist — 7Learn", year: "2017-2018" },
+      { title: "دورة Product Manager — جامعة شريف", year: "2022-2023" },
     ],
-
     domainsTitle: "مجالات التخصص",
     domains: [
       { name: "FinTech", name_fa: "التكنولوجيا المالية", color: "#3B82F6" },
@@ -285,7 +228,6 @@ const translations = {
   },
 };
 
-// Timeline data — یکسان برای همه زبان‌ها (فقط شرکت‌ها و عنوان‌ها ترجمه می‌شن)
 const timelineData = {
   fa: [
     {
@@ -317,8 +259,7 @@ const timelineData = {
       year: "۱۴۰۲",
       title: "طراح ارشد محصول",
       company: "PDN",
-      description:
-        "یکپارچه‌سازی طراحی وب و موبایل بر پایه تست قابلیت استفاده.",
+      description: "یکپارچه‌سازی طراحی وب و موبایل بر پایه تست قابلیت استفاده.",
       achievement: "کاهش ۱۰٪ اصطکاک کاربر",
     },
     {
@@ -374,8 +315,7 @@ const timelineData = {
       year: "2023",
       title: "Senior Product Designer",
       company: "PDN",
-      description:
-        "Unifying web and mobile design based on usability testing.",
+      description: "Unifying web and mobile design based on usability testing.",
       achievement: "10% user friction reduction",
     },
     {
@@ -407,7 +347,7 @@ const timelineData = {
       title: "مصمم منتجات أول",
       company: "EBCOM",
       description:
-        "إعادة تصميم المنصة الأساسية مع process mining وبناء نظام تصميم على مستوى الشركة لأكثر من 5 منتجات.",
+        "إعادة تصميم المنصة الأساسية مع process mining وبناء نظام تصميم على مستوى الشركة.",
       achievement: "تقليل 30% في وقت التسليم · 25% تحسين الكفاءة",
       current: true,
     },
@@ -424,15 +364,14 @@ const timelineData = {
       title: "قائد تصميم المنتج",
       company: "Vardast",
       description:
-        "إعادة تصميم تسجيل البائعين وبناء مكونات واجهة مستخدم قابلة للتوسع للسوق.",
+        "إعادة تصميم تسجيل البائعين وبناء مكونات واجهة مستخدم قابلة للتوسع.",
       achievement: "تقليل 15% في التسرب",
     },
     {
       year: "2023",
       title: "مصمم منتجات أول",
       company: "PDN",
-      description:
-        "توحيد تصميم الويب والجوال بناءً على اختبار قابلية الاستخدام.",
+      description: "توحيد تصميم الويب والجوال بناءً على اختبار قابلية الاستخدام.",
       achievement: "تقليل 10% في احتكاك المستخدم",
     },
     {
@@ -470,23 +409,23 @@ export default function AboutPage({ locale }: { locale: string }) {
   return (
     <main>
       {/* Hero */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16"
+            className="max-w-3xl mb-12 md:mb-16"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)] leading-relaxed">
               {t.description}
             </p>
           </motion.div>
@@ -497,12 +436,12 @@ export default function AboutPage({ locale }: { locale: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-20"
+            className="max-w-3xl mb-14 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-4 md:mb-6">
               {t.storyTitle}
             </h2>
-            <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed">
               {t.story}
             </p>
           </motion.div>
@@ -513,12 +452,12 @@ export default function AboutPage({ locale }: { locale: string }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-20"
+            className="mb-14 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.statsTitle}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {t.stats.map((stat, idx) => (
                 <motion.div
                   key={idx}
@@ -526,12 +465,12 @@ export default function AboutPage({ locale }: { locale: string }) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="text-center p-6 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)]"
+                  className="text-center p-5 md:p-6 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)]"
                 >
-                  <div className="text-4xl md:text-5xl font-black text-[var(--color-primary)] mb-2">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--color-primary)] mb-1.5 md:mb-2 leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-[var(--color-text-muted)]">
+                  <div className="text-xs md:text-sm text-[var(--color-text-muted)] leading-tight">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -542,7 +481,7 @@ export default function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-[var(--color-bg-alt)] [--section-card-bg:var(--color-bg)] [--section-card-bg-hover:var(--color-bg)] [--section-card-border:var(--color-border)]">
+      <section className="py-14 md:py-20 bg-[var(--color-bg-alt)] [--section-card-bg:var(--color-bg)] [--section-card-bg-hover:var(--color-bg)] [--section-card-border:var(--color-border)]">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -550,14 +489,18 @@ export default function AboutPage({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.valuesTitle}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
               {t.values.map((value, idx) => (
                 <Card key={idx}>
-                  <div className="text-3xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{value.title}</h3>
+                  <div className="text-3xl md:text-4xl mb-3 md:mb-4">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold mb-2">
+                    {value.title}
+                  </h3>
                   <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">
                     {value.description}
                   </p>
@@ -569,19 +512,19 @@ export default function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-32">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16 md:mb-20"
+            className="max-w-3xl mb-10 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-3 md:mb-4">
               {t.timelineTitle}
             </h2>
-            <p className="text-lg text-[var(--color-text-muted)]">
+            <p className="text-base md:text-lg text-[var(--color-text-muted)]">
               {t.timelineSubtitle}
             </p>
           </motion.div>
@@ -591,7 +534,7 @@ export default function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Domains */}
-      <section className="py-20 bg-[var(--color-bg-alt)]">
+      <section className="py-14 md:py-20 bg-[var(--color-bg-alt)]">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -599,10 +542,10 @@ export default function AboutPage({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.domainsTitle}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
               {t.domains.map((domain, idx) => (
                 <motion.div
                   key={idx}
@@ -610,13 +553,13 @@ export default function AboutPage({ locale }: { locale: string }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className="group p-5 rounded-[var(--radius-lg)] bg-[var(--color-bg)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 text-center"
+                  className="group p-4 md:p-5 rounded-[var(--radius-lg)] bg-[var(--color-bg)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 text-center"
                 >
                   <div
                     className="w-3 h-3 rounded-full mx-auto mb-3"
                     style={{ backgroundColor: domain.color }}
                   />
-                  <div className="text-sm font-bold">
+                  <div className="text-xs md:text-sm font-bold">
                     {validLocale === "fa" || validLocale === "ar"
                       ? domain.name_fa
                       : domain.name}
@@ -629,7 +572,7 @@ export default function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Team */}
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-32">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -637,10 +580,10 @@ export default function AboutPage({ locale }: { locale: string }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.teamTitle}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {t.team.map((member, idx) => (
                 <motion.div
                   key={idx}
@@ -648,16 +591,18 @@ export default function AboutPage({ locale }: { locale: string }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="p-8 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
+                  className="p-6 md:p-8 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] text-center"
                 >
-                  <div className="w-24 h-24 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-3xl font-black mx-auto mb-5">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center text-2xl md:text-3xl font-black mx-auto mb-4 md:mb-5">
                     {member.initial}
                   </div>
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-sm text-[var(--color-primary)] font-medium mb-4">
+                  <h3 className="text-lg md:text-xl font-bold mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-[var(--color-primary)] font-medium mb-4">
                     {member.role}
                   </p>
-                  <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-6">
+                  <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5 md:mb-6">
                     {member.bio}
                   </p>
                   <div className="flex items-center justify-center gap-3">
@@ -692,7 +637,7 @@ export default function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Awards */}
-      <section className="py-20 bg-[var(--color-bg-alt)]">
+      <section className="py-14 md:py-20 bg-[var(--color-bg-alt)]">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -701,7 +646,7 @@ export default function AboutPage({ locale }: { locale: string }) {
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <h2 className="text-3xl md:text-4xl font-black mb-10">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl font-black mb-8 md:mb-10">
               {t.awardsTitle}
             </h2>
             <div className="space-y-3">
@@ -712,12 +657,12 @@ export default function AboutPage({ locale }: { locale: string }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="flex items-center justify-between gap-4 p-5 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)]"
+                  className="flex items-center justify-between gap-3 md:gap-4 p-4 md:p-5 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)]"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center">
+                  <div className="flex items-center gap-3 md:gap-4 min-w-0">
+                    <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center shrink-0">
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4 md:w-5 md:h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -730,11 +675,11 @@ export default function AboutPage({ locale }: { locale: string }) {
                         />
                       </svg>
                     </div>
-                    <span className="font-medium text-sm md:text-base">
+                    <span className="font-medium text-xs sm:text-sm md:text-base truncate">
                       {award.title}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-[var(--color-primary)] shrink-0">
+                  <span className="text-[10px] md:text-xs font-bold text-[var(--color-primary)] shrink-0">
                     {award.year}
                   </span>
                 </motion.div>

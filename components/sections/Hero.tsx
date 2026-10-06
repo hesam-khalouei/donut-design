@@ -12,7 +12,9 @@ import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import ScrambleText from "@/components/ui/ScrambleText";
+import type { HeroSection } from "@/types/sections";
 
+// ---------- Fallback Translations ----------
 const translations = {
   fa: {
     badge: "آژانس طراحی محصولات دیجیتال",
@@ -49,7 +51,7 @@ const translations = {
     titleLine1: "منتجات رقمية،",
     titleLine2: "بتركيز على التجربة",
     description:
-      "أكثر من 7 سنوات من الخبرة في تصميم منتجات B2B و B2C المعقدة في مجالات التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق. متخصص في تبسيط سير العمل المعقد وبناء أنظمة تصميم قابلة للتوسع.",
+      "أكثر من 7 سنوات من الخبرة في تصميم منتجات B2B و B2C المعقدة في مجالات التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق.",
     ctaPrimary: "ابدأ مشروعك",
     ctaSecondary: "شاهد أعمالنا",
     stats: [
@@ -61,17 +63,48 @@ const translations = {
   },
 };
 
-export default function Hero() {
+// ---------- Normalize ----------
+function normalizeHeroData(
+  data: HeroSection | undefined,
+  locale: "fa" | "en" | "ar"
+) {
+  const fallback = translations[locale];
+  if (!data) return fallback;
+
+  return {
+    badge: data.badge || fallback.badge,
+    titleLine1: data.title_line_1 || fallback.titleLine1,
+    titleLine2: data.title_line_2 || fallback.titleLine2,
+    description: data.description || fallback.description,
+    ctaPrimary: data.cta_primary_text || fallback.ctaPrimary,
+    ctaSecondary: data.cta_secondary_text || fallback.ctaSecondary,
+    stats:
+      data.stats && data.stats.length > 0
+        ? data.stats.map((s) => ({ value: s.value, label: s.label }))
+        : fallback.stats,
+  };
+}
+
+// ---------- Component ----------
+interface HeroProps {
+  data?: HeroSection;
+  locale?: string;
+}
+
+export default function Hero({ data, locale: propLocale }: HeroProps) {
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1] || "fa";
-  const locale = ["fa", "en", "ar"].includes(currentLocale)
-    ? (currentLocale as "fa" | "en" | "ar")
-    : "fa";
-  const t = translations[locale];
+  const locale = (propLocale ||
+    (["fa", "en", "ar"].includes(currentLocale) ? currentLocale : "fa")) as
+    | "fa"
+    | "en"
+    | "ar";
+
+  // اگه data بود، از وردپرس. اگه نه، از fallback
+  const t = normalizeHeroData(data, locale);
 
   const ref = useRef<HTMLDivElement>(null);
 
-  // Parallax با اسکرول
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -82,7 +115,6 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
 
-  // Parallax با موس
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -125,31 +157,17 @@ export default function Hero() {
     <section
       ref={ref}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 pb-16"
     >
-      {/* گرادینت اول (با موس + اسکرول) */}
+      {/* ... (بقیه JSX مثل قبل) */}
       <motion.div
         style={{ y: y1, x: blob1X }}
-        className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-20 blur-[120px] rounded-full pointer-events-none"
+        className="absolute top-1/4 -right-32 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-20 blur-[120px] rounded-full pointer-events-none"
       />
 
-      {/* گرادینت دوم */}
       <motion.div
         style={{ y: y2, x: blob2X }}
-        className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-[var(--color-primary)] opacity-10 blur-[100px] rounded-full pointer-events-none"
-      />
-
-      {/* گرید تزئینی */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(var(--color-text) 1px, transparent 1px), linear-gradient(90deg, var(--color-text) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-        }}
+        className="absolute bottom-0 -left-32 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-[var(--color-primary)] opacity-10 blur-[100px] rounded-full pointer-events-none"
       />
 
       <Container className="relative z-10">
@@ -160,10 +178,10 @@ export default function Hero() {
           animate="visible"
           className="max-w-4xl mx-auto text-center"
         >
-          {/* Badge با ScrambleText */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-sm font-medium border border-[var(--color-primary)]/20">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="mb-6 md:mb-8">
+            <span className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs md:text-sm font-medium border border-[var(--color-primary)]/20 max-w-full">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse shrink-0" />
               <ScrambleText text={t.badge} duration={2} delay={0.5} />
             </span>
           </motion.div>
@@ -171,7 +189,7 @@ export default function Hero() {
           {/* Title */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 tracking-tight"
+            className="text-[2rem] leading-[1.2] sm:text-5xl sm:leading-[1.15] md:text-6xl md:leading-[1.1] lg:text-7xl lg:leading-[1.05] xl:text-8xl font-black mb-6 md:mb-8 tracking-tight"
           >
             <span className="block">{t.titleLine1}</span>
             <span className="block bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] bg-clip-text text-transparent">
@@ -182,7 +200,7 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-base leading-relaxed md:text-lg lg:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-8 md:mb-10 px-2"
           >
             {t.description}
           </motion.p>
@@ -190,7 +208,7 @@ export default function Hero() {
           {/* CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap gap-4 justify-center mb-20"
+            className="flex flex-row flex-wrap gap-3 md:gap-4 justify-center mb-12 md:mb-20"
           >
             <Button size="lg" href={`/${locale}/contact`}>
               {t.ctaPrimary}
@@ -216,14 +234,14 @@ export default function Hero() {
           {/* Stats */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-8 max-w-3xl mx-auto"
           >
             {t.stats.map((stat, idx) => (
               <div key={idx} className="text-center">
-                <div className="text-3xl md:text-4xl font-black text-[var(--color-primary)] mb-1">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--color-primary)] mb-1.5 leading-none">
                   {stat.value}
                 </div>
-                <div className="text-xs md:text-sm text-[var(--color-text-muted)]">
+                <div className="text-[10px] sm:text-xs md:text-sm text-[var(--color-text-muted)] leading-tight">
                   {stat.label}
                 </div>
               </div>
@@ -231,22 +249,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </Container>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-[var(--color-border)] flex items-start justify-center p-1.5"
-        >
-          <div className="w-1 h-2 rounded-full bg-[var(--color-primary)]" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

@@ -97,35 +97,35 @@ export default function BlogPage({ locale }: { locale: string }) {
 
   return (
     <main>
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-32">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-12"
+            className="max-w-3xl mb-10 md:mb-12"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)]">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)]">
               {t.description}
             </p>
           </motion.div>
 
           {loading ? (
-            <p className="text-center text-[var(--color-text-muted)] py-20">
+            <p className="text-center text-[var(--color-text-muted)] py-16 md:py-20">
               {t.loading}
             </p>
           ) : posts.length === 0 ? (
-            <p className="text-center text-[var(--color-text-muted)] py-20">
+            <p className="text-center text-[var(--color-text-muted)] py-16 md:py-20">
               {t.noPosts}
             </p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {posts.map((post, idx) => (
                 <motion.article
                   key={post.slug}
@@ -137,42 +137,44 @@ export default function BlogPage({ locale }: { locale: string }) {
                     href={`/${validLocale}/blog/${post.slug}`}
                     className="block group h-full"
                   >
-                    <div className="h-full flex flex-col rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-[var(--section-card-bg)]">
+                    <div className="h-full flex flex-col rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-[var(--color-bg)]">
                       <div
                         className={`aspect-[16/10] bg-gradient-to-br ${post.coverColor} relative overflow-hidden`}
                       >
-                        <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="absolute inset-0 flex items-center justify-center p-4">
                           <span
-                            className="text-3xl font-black opacity-30 px-4 text-center leading-tight"
+                            className="text-2xl sm:text-3xl md:text-4xl font-black opacity-40 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 px-4 text-center leading-tight truncate max-w-full"
                             style={{ color: post.coverAccent }}
                           >
                             {post.title}
                           </span>
                         </div>
                         {post.source === "wordpress" && (
-                          <div className="absolute top-3 right-3 px-2 py-1 rounded-full bg-green-500/90 text-white text-xs font-bold">
+                          <div className="absolute top-3 right-3 rtl:right-auto rtl:left-3 px-2 py-1 rounded-full bg-green-500/90 text-white text-[10px] font-bold">
                             WP
                           </div>
                         )}
                       </div>
 
-                      <div className="p-6 flex-1 flex flex-col">
-                        <div className="flex items-center gap-3 mb-3 text-xs text-[var(--color-text-muted)]">
+                      <div className="p-5 md:p-6 flex-1 flex flex-col">
+                        <div className="flex items-center gap-3 mb-3 text-xs text-[var(--color-text-muted)] flex-wrap">
                           <span>
                             {post.readTime} {t.readTime}
                           </span>
                         </div>
 
-                        <h2 className="text-lg font-bold mb-3 group-hover:text-[var(--color-primary)] transition-colors leading-snug">
+                        <h2 className="text-base md:text-lg font-bold mb-3 group-hover:text-[var(--color-primary)] transition-colors leading-snug line-clamp-2">
                           {post.title}
                         </h2>
-                        <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-6 flex-1">
+                        <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-5 flex-1 line-clamp-3">
                           {post.excerpt}
                         </p>
 
-                        <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)] pt-5 border-t border-[var(--color-border)]">
-                          <span>{formatDate(post.date, validLocale)}</span>
-                          <span className="text-[var(--color-primary)] font-medium flex items-center gap-1">
+                        <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)] pt-4 border-t border-[var(--color-border)] gap-2">
+                          <span className="truncate">
+                            {formatDate(post.date, validLocale)}
+                          </span>
+                          <span className="text-[var(--color-primary)] font-medium flex items-center gap-1 shrink-0">
                             {t.readMore}
                             <svg
                               className="w-3 h-3 group-hover:translate-x-1 transition-transform"

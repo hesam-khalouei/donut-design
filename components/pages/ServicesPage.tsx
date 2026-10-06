@@ -12,6 +12,7 @@ const translations = {
     title: "چیزی که برات می‌سازیم",
     description:
       "از ایده تا محصول نهایی — با تمرکز بر تجربه کاربری و تصمیم‌های داده‌محور.",
+    startProject: "شروع پروژه",
     services: [
       {
         icon: "🎨",
@@ -92,6 +93,7 @@ const translations = {
     title: "What we build for you",
     description:
       "From idea to final product — focused on UX and data-informed decisions.",
+    startProject: "Start a project",
     services: [
       {
         icon: "🎨",
@@ -172,6 +174,7 @@ const translations = {
     title: "ما نبنيه لك",
     description:
       "من الفكرة إلى المنتج النهائي — بتركيز على تجربة المستخدم والقرارات المبنية على البيانات.",
+    startProject: "ابدأ مشروعك",
     services: [
       {
         icon: "🎨",
@@ -210,7 +213,8 @@ const translations = {
       {
         icon: "⚡",
         title: "تحسين تجربة المستخدم",
-        description: "إعادة تصميم التدفقات الحالية، تقليل الاحتكاك، زيادة التحويل.",
+        description:
+          "إعادة تصميم التدفقات الحالية، تقليل الاحتكاك، زيادة التحويل.",
         features: [
           "تحليل قمع التحويل",
           "تحديد نقاط الاحتكاك",
@@ -221,7 +225,8 @@ const translations = {
       {
         icon: "📊",
         title: "استراتيجية المنتج",
-        description: "المساعدة في تحديد اتجاه المنتج وترتيب الميزات وخارطة الطريق.",
+        description:
+          "المساعدة في تحديد اتجاه المنتج وترتيب الميزات وخارطة الطريق.",
         features: [
           "رؤية المنتج",
           "ترتيب الميزات",
@@ -252,28 +257,28 @@ export default function ServicesPage({ locale }: { locale: string }) {
 
   return (
     <main>
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16 md:mb-20"
+            className="max-w-3xl mb-10 md:mb-20"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)] leading-relaxed">
               {t.description}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {t.services.map((service, idx) => (
               <motion.div
                 key={idx}
@@ -283,14 +288,16 @@ export default function ServicesPage({ locale }: { locale: string }) {
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
                 <Card className="h-full group">
-                  <div className="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300 inline-block">
+                  <div className="text-5xl md:text-6xl mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-300 inline-block leading-none">
                     {service.icon}
                   </div>
-                  <h2 className="text-2xl font-bold mb-3">{service.title}</h2>
-                  <p className="text-[var(--color-text-muted)] leading-relaxed text-sm mb-6">
+                  <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                    {service.title}
+                  </h2>
+                  <p className="text-[var(--color-text-muted)] leading-relaxed text-sm mb-5 md:mb-6">
                     {service.description}
                   </p>
-                  <ul className="space-y-2 pt-6 border-t border-[var(--color-border)]">
+                  <ul className="space-y-2 pt-5 border-t border-[var(--color-border)]">
                     {service.features.map((feature, i) => (
                       <li
                         key={i}
@@ -318,13 +325,9 @@ export default function ServicesPage({ locale }: { locale: string }) {
             ))}
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-12 md:mt-16">
             <Button size="lg" href={`/${validLocale}/contact`}>
-              {validLocale === "fa"
-                ? "شروع پروژه"
-                : validLocale === "ar"
-                ? "ابدأ مشروعك"
-                : "Start a project"}
+              {t.startProject}
             </Button>
           </div>
         </Container>

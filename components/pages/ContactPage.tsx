@@ -110,49 +110,57 @@ function ContactForm({ locale }: { locale: string }) {
     }, 1000);
   };
 
+  const inputClass =
+    "w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors text-sm md:text-base";
+
   return (
     <main>
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[var(--color-primary)] opacity-10 blur-[150px] rounded-full pointer-events-none" />
 
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16"
+            className="max-w-3xl mb-10 md:mb-16"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)] leading-relaxed">
               {t.description}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
+            {/* Form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               className="lg:col-span-2"
             >
-              <div className="p-8 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
-                <h2 className="text-2xl font-bold mb-8">{t.formTitle}</h2>
+              <div className="p-6 md:p-10 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
+                <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8">
+                  {t.formTitle}
+                </h2>
 
                 {status === "success" ? (
-                  <div className="p-6 rounded-[var(--radius-md)] bg-[var(--color-success)]/10 border border-[var(--color-success)]/20 text-center">
-                    <div className="text-4xl mb-3">✓</div>
-                    <p className="font-medium">{t.success}</p>
+                  <div className="p-5 md:p-6 rounded-[var(--radius-md)] bg-[var(--color-success)]/10 border border-[var(--color-success)]/20 text-center">
+                    <div className="text-3xl md:text-4xl mb-3">✓</div>
+                    <p className="font-medium text-sm md:text-base">
+                      {t.success}
+                    </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                       <div>
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-xs md:text-sm font-medium mb-2">
                           {t.name}
                         </label>
                         <input
@@ -163,11 +171,11 @@ function ContactForm({ locale }: { locale: string }) {
                             setFormData({ ...formData, name: e.target.value })
                           }
                           placeholder={t.namePlaceholder}
-                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                          className={inputClass}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-xs md:text-sm font-medium mb-2">
                           {t.email}
                         </label>
                         <input
@@ -178,12 +186,12 @@ function ContactForm({ locale }: { locale: string }) {
                             setFormData({ ...formData, email: e.target.value })
                           }
                           placeholder={t.emailPlaceholder}
-                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                          className={inputClass}
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">
+                      <label className="block text-xs md:text-sm font-medium mb-2">
                         {t.subject}
                       </label>
                       <input
@@ -193,11 +201,11 @@ function ContactForm({ locale }: { locale: string }) {
                           setFormData({ ...formData, subject: e.target.value })
                         }
                         placeholder={t.subjectPlaceholder}
-                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                        className={inputClass}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">
+                      <label className="block text-xs md:text-sm font-medium mb-2">
                         {t.message}
                       </label>
                       <textarea
@@ -208,7 +216,7 @@ function ContactForm({ locale }: { locale: string }) {
                           setFormData({ ...formData, message: e.target.value })
                         }
                         placeholder={t.messagePlaceholder}
-                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors resize-none"
+                        className={`${inputClass} resize-none`}
                       />
                     </div>
                     <Button
@@ -224,14 +232,15 @@ function ContactForm({ locale }: { locale: string }) {
               </div>
             </motion.div>
 
+            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="space-y-6"
+              className="space-y-5 md:space-y-6"
             >
               <div className="p-6 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-5">
+                <h3 className="text-xs md:text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4 md:mb-5">
                   {t.contactInfo}
                 </h3>
                 <div className="space-y-4">
@@ -241,7 +250,7 @@ function ContactForm({ locale }: { locale: string }) {
                     </div>
                     <a
                       href="mailto:hesam.khalouei8@gmail.com"
-                      className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors"
+                      className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors break-all"
                     >
                       hesam.khalouei8@gmail.com
                     </a>
@@ -268,7 +277,7 @@ function ContactForm({ locale }: { locale: string }) {
               </div>
 
               <div className="p-6 rounded-[var(--radius-lg)] bg-[var(--color-bg-alt)] border border-[var(--color-border)]">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-5">
+                <h3 className="text-xs md:text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4 md:mb-5">
                   {t.social}
                 </h3>
                 <div className="flex gap-3">

@@ -54,7 +54,7 @@ const caseStudies = [
       ar: "زيادة 25% في التحويل",
     },
     readTime: "8",
-    color: "from-blue-500/20 to-cyan-500/20",
+    color: "from-blue-500/25 to-cyan-500/25",
     accent: "#3B82F6",
   },
   {
@@ -76,7 +76,7 @@ const caseStudies = [
       ar: "تقليل 20% في وقت المهمة",
     },
     readTime: "7",
-    color: "from-orange-500/20 to-red-500/20",
+    color: "from-orange-500/25 to-red-500/25",
     accent: "#FF6B35",
   },
   {
@@ -98,7 +98,7 @@ const caseStudies = [
       ar: "تقليل 15% في التسرب",
     },
     readTime: "9",
-    color: "from-purple-500/20 to-pink-500/20",
+    color: "from-purple-500/25 to-pink-500/25",
     accent: "#8B5CF6",
   },
   {
@@ -120,7 +120,7 @@ const caseStudies = [
       ar: "تقليل 30% في وقت التسليم",
     },
     readTime: "6",
-    color: "from-indigo-500/20 to-blue-500/20",
+    color: "from-indigo-500/25 to-blue-500/25",
     accent: "#6366F1",
   },
 ];
@@ -133,26 +133,26 @@ export default function CaseStudiesPage({ locale }: { locale: string }) {
 
   return (
     <main>
-      <section className="py-20 md:py-32">
+      <section className="py-16 md:py-32">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-3xl mb-16"
+            className="max-w-3xl mb-10 md:mb-16"
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-3xl leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6">
               {t.title}
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)]">
+            <p className="text-base md:text-lg lg:text-xl text-[var(--color-text-muted)]">
               {t.description}
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-5 md:space-y-6">
             {caseStudies.map((cs, idx) => (
               <motion.div
                 key={cs.slug}
@@ -168,24 +168,28 @@ export default function CaseStudiesPage({ locale }: { locale: string }) {
                   data-cursor-label={t.viewCase}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 hover:shadow-xl bg-[var(--section-card-bg)]">
+                    {/* Visual */}
                     <div
-                      className={`aspect-[4/3] md:aspect-auto md:min-h-[320px] bg-gradient-to-br ${cs.color} relative overflow-hidden`}
+                      className={`aspect-[16/10] md:aspect-auto md:min-h-[320px] bg-gradient-to-br ${cs.color} relative overflow-hidden`}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute inset-0 flex items-center justify-center p-4">
                         <span
-                          className="text-5xl md:text-7xl font-black opacity-25 group-hover:scale-110 transition-transform duration-700"
+                          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black opacity-40 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 truncate max-w-full"
                           style={{ color: cs.accent }}
                         >
-                          {cs.slug === "ebcom" ? "EBCOM" : cs.slug.charAt(0).toUpperCase() + cs.slug.slice(1)}
+                          {cs.slug === "ebcom"
+                            ? "EBCOM"
+                            : cs.slug.charAt(0).toUpperCase() + cs.slug.slice(1)}
                         </span>
                       </div>
-                      <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-bold">
+                      <div className="absolute top-4 right-4 rtl:right-auto rtl:left-4 px-3 py-1 rounded-full bg-white/95 backdrop-blur text-[11px] md:text-xs font-bold text-gray-900">
                         {cs.category}
                       </div>
                     </div>
 
-                    <div className="p-8 md:p-10 flex flex-col justify-center">
-                      <div className="flex items-center gap-3 mb-4 text-xs text-[var(--color-text-muted)]">
+                    {/* Content */}
+                    <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-3 md:mb-4 text-xs text-[var(--color-text-muted)] flex-wrap">
                         <span className="font-bold text-[var(--color-primary)]">
                           {cs.result[validLocale]}
                         </span>
@@ -194,10 +198,10 @@ export default function CaseStudiesPage({ locale }: { locale: string }) {
                           {t.readTime}: {cs.readTime} {t.min}
                         </span>
                       </div>
-                      <h2 className="text-2xl md:text-3xl font-black mb-4 group-hover:text-[var(--color-primary)] transition-colors leading-tight">
+                      <h2 className="text-xl leading-snug sm:text-2xl md:text-3xl font-black mb-3 md:mb-4 group-hover:text-[var(--color-primary)] transition-colors">
                         {cs.title[validLocale]}
                       </h2>
-                      <p className="text-[var(--color-text-muted)] mb-6 leading-relaxed">
+                      <p className="text-sm md:text-base text-[var(--color-text-muted)] mb-5 md:mb-6 leading-relaxed">
                         {cs.excerpt[validLocale]}
                       </p>
                       <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">

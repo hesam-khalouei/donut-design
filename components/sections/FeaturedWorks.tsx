@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import type { FeaturedWorksSection } from "@/types/sections";
 
 const translations = {
   fa: {
@@ -14,6 +15,12 @@ const translations = {
     viewAll: "مشاهده همه پروژه‌ها",
     viewCase: "مطالعه موردی",
     cursorLabel: "مشاهده",
+    projects: [
+      { title: "Ewano", category: "فین‌تک", description: "پلتفرم بانکداری و خدمات مالی دیجیتال", slug: "ewano", color: "from-blue-500/25 to-cyan-500/25", accent: "#3B82F6" },
+      { title: "Postex", category: "لجستیک", description: "پلتفرم مدیریت لجستیک و ارسال مرسولات", slug: "postex", color: "from-orange-500/25 to-red-500/25", accent: "#FF6B35" },
+      { title: "Vardast", category: "مارکت‌پلیس", description: "مارکت‌پلیس B2B و B2C ساختمانی", slug: "vardast", color: "from-purple-500/25 to-pink-500/25", accent: "#8B5CF6" },
+      { title: "Kayak", category: "سفر", description: "پلتفرم جستجوی سفر و بلیط", slug: "kayak", color: "from-emerald-500/25 to-teal-500/25", accent: "#10B981" },
+    ],
   },
   en: {
     label: "Our Work",
@@ -22,6 +29,12 @@ const translations = {
     viewAll: "View all projects",
     viewCase: "Read case study",
     cursorLabel: "View",
+    projects: [
+      { title: "Ewano", category: "FinTech", description: "Digital banking platform", slug: "ewano", color: "from-blue-500/25 to-cyan-500/25", accent: "#3B82F6" },
+      { title: "Postex", category: "Logistics", description: "Logistics management platform", slug: "postex", color: "from-orange-500/25 to-red-500/25", accent: "#FF6B35" },
+      { title: "Vardast", category: "Marketplace", description: "B2B & B2C marketplace", slug: "vardast", color: "from-purple-500/25 to-pink-500/25", accent: "#8B5CF6" },
+      { title: "Kayak", category: "Travel", description: "Travel search platform", slug: "kayak", color: "from-emerald-500/25 to-teal-500/25", accent: "#10B981" },
+    ],
   },
   ar: {
     label: "أعمالنا",
@@ -30,82 +43,79 @@ const translations = {
     viewAll: "عرض جميع المشاريع",
     viewCase: "اقرأ دراسة الحالة",
     cursorLabel: "عرض",
+    projects: [
+      { title: "Ewano", category: "التكنولوجيا المالية", description: "منصة مصرفية رقمية", slug: "ewano", color: "from-blue-500/25 to-cyan-500/25", accent: "#3B82F6" },
+      { title: "Postex", category: "اللوجستيات", description: "منصة إدارة الشحنات", slug: "postex", color: "from-orange-500/25 to-red-500/25", accent: "#FF6B35" },
+      { title: "Vardast", category: "السوق", description: "سوق بناء B2B و B2C", slug: "vardast", color: "from-purple-500/25 to-pink-500/25", accent: "#8B5CF6" },
+      { title: "Kayak", category: "السفر", description: "منصة البحث عن السفر", slug: "kayak", color: "from-emerald-500/25 to-teal-500/25", accent: "#10B981" },
+    ],
   },
 };
 
-const projects = [
-  {
-    title: "Ewano",
-    category: { fa: "فین‌تک", en: "FinTech", ar: "التكنولوجيا المالية" },
-    description: {
-      fa: "پلتفرم بانکداری و خدمات مالی دیجیتال با تمرکز بر تجربه کاربری روان",
-      en: "Digital banking and financial services platform focused on smooth UX",
-      ar: "منصة مصرفية ومالية رقمية تركز على تجربة سلسة",
-    },
-    color: "from-blue-500/20 to-cyan-500/20",
-    accent: "#3B82F6",
-  },
-  {
-    title: "Postex",
-    category: { fa: "لجستیک", en: "Logistics", ar: "الخدمات اللوجستية" },
-    description: {
-      fa: "پلتفرم مدیریت لجستیک و ارسال مرسولات با بهینه‌سازی workflow",
-      en: "Logistics and shipment management platform with workflow optimization",
-      ar: "منصة إدارة الشحنات واللوجستيات مع تحسين سير العمل",
-    },
-    color: "from-orange-500/20 to-red-500/20",
-    accent: "#FF6B35",
-  },
-  {
-    title: "Vardast",
-    category: { fa: "مارکت‌پلیس", en: "Marketplace", ar: "السوق" },
-    description: {
-      fa: "مارکت‌پلیس B2B و B2C ساختمانی با تمرکز بر onboarding فروشندگان",
-      en: "B2B & B2C construction marketplace focused on seller onboarding",
-      ar: "سوق بناء B2B و B2C يركز على تسجيل البائعين",
-    },
-    color: "from-purple-500/20 to-pink-500/20",
-    accent: "#8B5CF6",
-  },
-  {
-    title: "Kayak",
-    category: { fa: "سفر", en: "Travel", ar: "السفر" },
-    description: {
-      fa: "پلتفرم جستجوی سفر و بلیط با رابط کاربری مدرن",
-      en: "Travel and ticket search platform with modern UI",
-      ar: "منصة البحث عن السفر والتذاكر بواجهة حديثة",
-    },
-    color: "from-emerald-500/20 to-teal-500/20",
-    accent: "#10B981",
-  },
-];
+function normalizeFeaturedWorksData(
+  data: FeaturedWorksSection | undefined,
+  locale: "fa" | "en" | "ar"
+) {
+  const fallback = translations[locale];
+  if (!data) return fallback;
+  return {
+    label: data.label || fallback.label,
+    title: data.title || fallback.title,
+    description: data.description || fallback.description,
+    viewAll: data.view_all_text || fallback.viewAll,
+    viewCase: fallback.viewCase,
+    cursorLabel: fallback.cursorLabel,
+    projects:
+      data.projects && data.projects.length > 0
+        ? data.projects.map((p) => ({
+            title: p.title,
+            category: p.category,
+            description: p.description,
+            slug: p.slug,
+            color: p.color,
+            accent: p.accent,
+          }))
+        : fallback.projects,
+  };
+}
 
-export default function FeaturedWorks() {
+interface FeaturedWorksProps {
+  data?: FeaturedWorksSection;
+  locale?: string;
+}
+
+export default function FeaturedWorks({
+  data,
+  locale: propLocale,
+}: FeaturedWorksProps) {
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1] || "fa";
-  const locale = ["fa", "en", "ar"].includes(currentLocale)
-    ? (currentLocale as "fa" | "en" | "ar")
-    : "fa";
-  const t = translations[locale];
+  const locale = (propLocale ||
+    (["fa", "en", "ar"].includes(currentLocale) ? currentLocale : "fa")) as
+    | "fa"
+    | "en"
+    | "ar";
+
+  const t = normalizeFeaturedWorksData(data, locale);
 
   return (
-    <section className="py-20 md:py-32 bg-[var(--color-bg-alt)] [--section-card-bg:var(--color-bg)] [--section-card-bg-hover:var(--color-bg)] [--section-card-border:var(--color-border)]">
+    <section className="py-16 md:py-32 bg-[var(--color-bg-alt)] [--section-card-bg:var(--color-bg)] [--section-card-bg-hover:var(--color-bg)] [--section-card-border:var(--color-border)]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-16"
         >
           <div className="max-w-2xl">
-            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-4 md:mb-5">
               {t.label}
             </span>
-            <h2 className="text-4xl md:text-6xl font-black leading-tight mb-4">
+            <h2 className="text-3xl leading-tight sm:text-4xl md:text-6xl font-black mb-3 md:mb-4">
               {t.title}
             </h2>
-            <p className="text-lg text-[var(--color-text-muted)]">
+            <p className="text-base md:text-lg text-[var(--color-text-muted)]">
               {t.description}
             </p>
           </div>
@@ -116,8 +126,8 @@ export default function FeaturedWorks() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {t.projects.map((project, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 40 }}
@@ -126,34 +136,34 @@ export default function FeaturedWorks() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
               <Link
-                href={`/${locale}/case-studies/${project.title.toLowerCase()}`}
+                href={`/${locale}/case-studies/${project.slug}`}
                 className="block group"
                 data-cursor="view"
                 data-cursor-label={t.cursorLabel}
               >
                 <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--section-card-border)] hover:border-[var(--color-primary)] transition-all duration-500">
                   <div
-                    className={`aspect-[4/3] bg-gradient-to-br ${project.color} relative overflow-hidden`}
+                    className={`aspect-[16/10] md:aspect-[4/3] bg-gradient-to-br ${project.color} relative overflow-hidden`}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center p-4">
                       <span
-                        className="text-5xl md:text-7xl font-black opacity-20 group-hover:scale-110 transition-transform duration-700"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black opacity-40 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 truncate max-w-full"
                         style={{ color: project.accent }}
                       >
                         {project.title}
                       </span>
                     </div>
-                    <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-bold">
-                      {project.category[locale]}
+                    <div className="absolute top-4 right-4 rtl:right-auto rtl:left-4 px-3 py-1 rounded-full bg-white/95 backdrop-blur text-[11px] md:text-xs font-bold text-gray-900">
+                      {project.category}
                     </div>
                   </div>
 
-                  <div className="p-6 md:p-8">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">
+                  <div className="p-5 md:p-8">
+                    <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-[var(--color-text-muted)] text-sm mb-4">
-                      {project.description[locale]}
+                    <p className="text-[var(--color-text-muted)] text-sm mb-4 leading-relaxed">
+                      {project.description}
                     </p>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
                       {t.viewCase}
@@ -178,7 +188,7 @@ export default function FeaturedWorks() {
           ))}
         </div>
 
-        <div className="md:hidden mt-10 text-center">
+        <div className="md:hidden mt-8 text-center">
           <Button variant="outline" href={`/${locale}/works`}>
             {t.viewAll}
           </Button>
