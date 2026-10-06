@@ -17,6 +17,7 @@ const navItems = [
   },
   { href: "/about", label: { fa: "درباره ما", en: "About", ar: "من نحن" } },
   { href: "/blog", label: { fa: "بلاگ", en: "Blog", ar: "المدونة" } },
+  { href: "/faq", label: { fa: "سوالات متداول", en: "FAQ", ar: "الأسئلة الشائعة" } },
 ];
 
 const ctaLabel = {
@@ -55,7 +56,6 @@ export default function Header() {
     >
       <Container>
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
           <Link
             href={`/${locale}`}
             className="text-xl md:text-2xl font-black tracking-tight"
@@ -63,7 +63,6 @@ export default function Header() {
             Donut<span className="text-[var(--color-primary)]">.</span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = pathname.includes(item.href);
@@ -83,7 +82,6 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Right Side */}
           <div className="flex items-center gap-3">
             <ThemeSwitcher />
             <LanguageSwitcher />
@@ -93,7 +91,6 @@ export default function Header() {
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--color-bg-alt)] transition-colors"
@@ -121,10 +118,9 @@ export default function Header() {
         </div>
       </Container>
 
-      {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[500px]" : "max-h-0"
+          mobileOpen ? "max-h-[700px]" : "max-h-0"
         }`}
       >
         <Container>
@@ -138,6 +134,12 @@ export default function Header() {
                 {item.label[locale]}
               </Link>
             ))}
+            <Link
+              href={`/${locale}/careers`}
+              className="px-4 py-3 rounded-[var(--radius-md)] text-base font-medium hover:bg-[var(--color-bg-alt)] transition-colors"
+            >
+              {locale === "fa" ? "فرصت‌های شغلی" : locale === "ar" ? "الوظائف" : "Careers"}
+            </Link>
             <div className="mt-4">
               <Button href={`/${locale}/contact`} className="w-full">
                 {ctaLabel[locale]}

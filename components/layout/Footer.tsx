@@ -16,6 +16,8 @@ const translations = {
       about: "درباره ما",
       works: "نمونه‌کارها",
       blog: "بلاگ",
+      faq: "سوالات متداول",
+      careers: "فرصت‌های شغلی",
       contact: "تماس با ما",
     },
     servicesList: {
@@ -41,6 +43,8 @@ const translations = {
       about: "About",
       works: "Work",
       blog: "Blog",
+      faq: "FAQ",
+      careers: "Careers",
       contact: "Contact",
     },
     servicesList: {
@@ -66,6 +70,8 @@ const translations = {
       about: "من نحن",
       works: "أعمالنا",
       blog: "المدونة",
+      faq: "الأسئلة الشائعة",
+      careers: "الوظائف",
       contact: "اتصل بنا",
     },
     servicesList: {
@@ -125,6 +131,8 @@ export default function Footer() {
     { href: `/${locale}/about`, label: t.links.about },
     { href: `/${locale}/works`, label: t.links.works },
     { href: `/${locale}/blog`, label: t.links.blog },
+    { href: `/${locale}/faq`, label: t.links.faq },
+    { href: `/${locale}/careers`, label: t.links.careers },
     { href: `/${locale}/contact`, label: t.links.contact },
   ];
 
@@ -137,15 +145,12 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--color-bg-dark)] text-white relative overflow-hidden">
-      {/* گرادینت تزئینی */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-primary)] opacity-10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[var(--color-primary)] opacity-5 blur-[120px] rounded-full pointer-events-none" />
 
       <Container>
         <div className="relative py-16 md:py-20">
-          {/* بخش بالا */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-            {/* برند */}
             <div className="lg:col-span-1">
               <Link
                 href={`/${locale}`}
@@ -172,7 +177,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* لینک‌های سریع */}
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-5">
                 {t.quickLinks}
@@ -191,7 +195,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* خدمات */}
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-5">
                 {t.services}
@@ -210,7 +213,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* تماس */}
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-white/40 mb-5">
                 {t.contact}
@@ -238,13 +240,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* خط جداکننده */}
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/40 text-sm">
               © {new Date().getFullYear()} Donut Design. {t.rights}
             </p>
             <p className="text-white/40 text-xs">
-              Designed & built with <span className="text-[var(--color-primary)]">♥</span>
+              Designed & built with{" "}
+              <span className="text-[var(--color-primary)]">♥</span>
             </p>
           </div>
         </div>

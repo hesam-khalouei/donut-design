@@ -12,4 +12,5 @@ export { default as LoadingScreen } from "./LoadingScreen";
 export { default as ScrollProgress } from "./ScrollProgress";
 export { default as BackToTop } from "./BackToTop";
 export { default as ScrambleText } from "./ScrambleText";
+export { default as Timeline } from "./Timeline";
 export { ThemeProvider, useTheme } from "./ThemeProvider";
