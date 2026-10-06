@@ -53,6 +53,7 @@ const translations = {
     results: "النتائج الرئيسية",
     nextCase: "دراسة الحالة التالية",
     backToAll: "عرض الكل",
+     viewCase: "عرض",
   },
 };
 

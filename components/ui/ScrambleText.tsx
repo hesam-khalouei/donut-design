@@ -34,27 +34,23 @@ export default function ScrambleText({
     let frame = 0;
     const totalFrames = Math.round(duration * 60);
     const textLength = text.length;
-    let timeout: NodeJS.Timeout;
 
     const startTimeout = setTimeout(() => {
       const animate = () => {
         frame++;
         const progress = frame / totalFrames;
 
-        // تعداد حروفی که باید ثابت بشن
         const revealedLength = Math.floor(progress * textLength);
 
         let output = "";
         for (let i = 0; i < textLength; i++) {
           if (i < revealedLength) {
-            // حروف reveal شده
             output += text[i];
           } else if (text[i] === " ") {
-            // فاصله‌ها
             output += " ";
           } else {
-            // حروف تصادفی
-            output += characters[Math.floor(Math.random() * characters.length)];
+            output +=
+              characters[Math.floor(Math.random() * characters.length)];
           }
         }
 
@@ -73,7 +69,6 @@ export default function ScrambleText({
 
     return () => {
       clearTimeout(startTimeout);
-      clearTimeout(timeout);
     };
   }, [isInView, text, delay, duration, characters, once]);
 
