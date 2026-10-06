@@ -199,7 +199,7 @@ export default function WorksPage({ locale }: { locale: string }) {
                     href={`/${validLocale}/case-studies/${project.slug}`}
                     className="block group"
                   >
-                    <div className="rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-bg)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 hover:shadow-xl">
+                    <div className="rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 hover:shadow-xl">
                       <div
                         className={`aspect-[4/3] bg-gradient-to-br ${project.color} relative overflow-hidden`}
                       >

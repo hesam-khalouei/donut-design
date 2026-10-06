@@ -170,7 +170,7 @@ export default function FeaturedWorks() {
                 href={`/${locale}/case-studies/${project.title.toLowerCase()}`}
                 className="group block"
               >
-                <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-bg)] border border-[var(--color-border)] transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
+                <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--color-border)] transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
                   {/* Placeholder تصویر */}
                   <div
                     className={`aspect-[4/3] bg-gradient-to-br ${project.gradient} relative overflow-hidden`}

@@ -143,7 +143,7 @@ export default function CategoryPage({
                     href={`/${validLocale}/blog/${post.slug}`}
                     className="block group h-full"
                   >
-                    <div className="h-full flex flex-col rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-[var(--color-bg)]">
+                    <div className="h-full flex flex-col rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-[var(--section-card-bg)]">
                       <div
                         className={`aspect-[16/10] bg-gradient-to-br ${post.coverColor} relative overflow-hidden`}
                       >

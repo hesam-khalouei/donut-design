@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const navItems = [
   { href: "/services", label: { fa: "خدمات", en: "Services", ar: "الخدمات" } },
@@ -84,6 +85,7 @@ export default function Header() {
 
           {/* Right Side */}
           <div className="flex items-center gap-3">
+            <ThemeSwitcher />
             <LanguageSwitcher />
             <div className="hidden md:block">
               <Button href={`/${locale}/contact`} size="sm">

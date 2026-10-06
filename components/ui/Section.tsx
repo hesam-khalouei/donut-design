@@ -14,6 +14,25 @@ const bgClasses = {
   dark: "bg-[var(--color-bg-dark)] text-white",
 };
 
+// ⚠️ رنگ کارت‌ها بر اساس پس‌زمینه سکشن
+const cardBgVars = {
+  default: `
+    [--section-card-bg:var(--color-card-bg)]
+    [--section-card-bg-hover:var(--color-card-bg-hover)]
+    [--section-card-border:var(--color-card-border)]
+  `,
+  alt: `
+    [--section-card-bg:var(--color-bg)]
+    [--section-card-bg-hover:var(--color-bg)]
+    [--section-card-border:var(--color-border)]
+  `,
+  dark: `
+    [--section-card-bg:rgba(255,255,255,0.03)]
+    [--section-card-bg-hover:rgba(255,255,255,0.06)]
+    [--section-card-border:rgba(255,255,255,0.1)]
+  `,
+};
+
 const spacingClasses = {
   sm: "py-12 md:py-16",
   md: "py-16 md:py-24",
@@ -30,7 +49,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`${bgClasses[bg]} ${spacingClasses[spacing]} ${className}`}
+      className={`${bgClasses[bg]} ${spacingClasses[spacing]} ${cardBgVars[bg]} ${className}`}
     >
       {children}
     </section>

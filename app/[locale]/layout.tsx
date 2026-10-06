@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/ui/SmoothScroll";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 const locales = ["fa", "en", "ar"] as const;
 type Locale = (typeof locales)[number];
@@ -28,15 +30,19 @@ export default async function LocaleLayout({
     : "fa";
 
   return (
-    <div
-      lang={validLocale}
-      dir={dirMap[validLocale]}
-      data-locale={validLocale}
-      className="min-h-screen flex flex-col"
-    >
-      <Header />
-      <main className="flex-1 pt-16 md:pt-20">{children}</main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div
+        lang={validLocale}
+        dir={dirMap[validLocale]}
+        data-locale={validLocale}
+        className="min-h-screen flex flex-col"
+      >
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1 pt-16 md:pt-20">{children}</main>
+          <Footer />
+        </SmoothScroll>
+      </div>
+    </ThemeProvider>
   );
 }

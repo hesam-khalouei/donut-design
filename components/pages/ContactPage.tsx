@@ -159,7 +159,7 @@ export default function ContactPage({ locale }: { locale: string }) {
                             setFormData({ ...formData, name: e.target.value })
                           }
                           placeholder={t.namePlaceholder}
-                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--section-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -174,7 +174,7 @@ export default function ContactPage({ locale }: { locale: string }) {
                             setFormData({ ...formData, email: e.target.value })
                           }
                           placeholder={t.emailPlaceholder}
-                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--section-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -189,7 +189,7 @@ export default function ContactPage({ locale }: { locale: string }) {
                           setFormData({ ...formData, subject: e.target.value })
                         }
                         placeholder={t.subjectPlaceholder}
-                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--section-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors"
                       />
                     </div>
                     <div>
@@ -204,7 +204,7 @@ export default function ContactPage({ locale }: { locale: string }) {
                           setFormData({ ...formData, message: e.target.value })
                         }
                         placeholder={t.messagePlaceholder}
-                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-[var(--radius-md)] bg-[var(--section-card-bg)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:outline-none transition-colors resize-none"
                       />
                     </div>
                     <Button

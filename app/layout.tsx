@@ -63,6 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      lang="fa"
       className={`${iranYekanX.variable} ${poppins.variable} ${dmSans.variable} ${ibmPlexArabic.variable}`}
       suppressHydrationWarning
     >

@@ -21,9 +21,9 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`bg-[var(--color-bg)] border border-[var(--color-border)] rounded-[var(--radius-lg)] ${paddingClasses[padding]} ${
+      className={`bg-[var(--section-card-bg)] border border-[var(--section-card-border)] rounded-[var(--radius-lg)] ${paddingClasses[padding]} ${
         hover
-          ? "transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[var(--color-primary)]"
+          ? "transition-all duration-300 hover:bg-[var(--section-card-bg-hover)] hover:shadow-lg hover:-translate-y-1 hover:border-[var(--color-primary)]"
           : ""
       } ${className}`}
     >
