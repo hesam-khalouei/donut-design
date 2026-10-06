@@ -1,10 +1,17 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import ScrambleText from "@/components/ui/ScrambleText";
 
 const translations = {
   fa: {
@@ -63,6 +70,8 @@ export default function Hero() {
   const t = translations[locale];
 
   const ref = useRef<HTMLDivElement>(null);
+
+  // Parallax با اسکرول
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -72,6 +81,25 @@ export default function Hero() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+
+  // Parallax با موس
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const mouseXSpring = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const mouseYSpring = useSpring(mouseY, { stiffness: 100, damping: 20 });
+
+  const blob1X = useTransform(mouseXSpring, [-0.5, 0.5], [-40, 40]);
+  const blob2X = useTransform(mouseXSpring, [-0.5, 0.5], [30, -30]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -96,17 +124,22 @@ export default function Hero() {
   return (
     <section
       ref={ref}
+      onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
     >
+      {/* گرادینت اول (با موس + اسکرول) */}
       <motion.div
-        style={{ y: y1 }}
+        style={{ y: y1, x: blob1X }}
         className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-20 blur-[120px] rounded-full pointer-events-none"
       />
+
+      {/* گرادینت دوم */}
       <motion.div
-        style={{ y: y2 }}
+        style={{ y: y2, x: blob2X }}
         className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-[var(--color-primary)] opacity-10 blur-[100px] rounded-full pointer-events-none"
       />
 
+      {/* گرید تزئینی */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -127,13 +160,15 @@ export default function Hero() {
           animate="visible"
           className="max-w-4xl mx-auto text-center"
         >
+          {/* Badge با ScrambleText */}
           <motion.div variants={itemVariants} className="mb-8">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-sm font-medium border border-[var(--color-primary)]/20">
               <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
-              {t.badge}
+              <ScrambleText text={t.badge} duration={2} delay={0.5} />
             </span>
           </motion.div>
 
+          {/* Title */}
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 tracking-tight"
@@ -144,6 +179,7 @@ export default function Hero() {
             </span>
           </motion.h1>
 
+          {/* Description */}
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10 leading-relaxed"
@@ -151,6 +187,7 @@ export default function Hero() {
             {t.description}
           </motion.p>
 
+          {/* CTA */}
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap gap-4 justify-center mb-20"
@@ -176,6 +213,7 @@ export default function Hero() {
             </Button>
           </motion.div>
 
+          {/* Stats */}
           <motion.div
             variants={itemVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto"
@@ -194,6 +232,7 @@ export default function Hero() {
         </motion.div>
       </Container>
 
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
