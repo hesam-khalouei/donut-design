@@ -21,6 +21,7 @@ const translations = {
     results: "نتایج کلیدی",
     nextCase: "مطالعه موردی بعدی",
     backToAll: "مشاهده همه",
+    viewCase: "مشاهده",
   },
   en: {
     back: "Back to case studies",
@@ -36,6 +37,7 @@ const translations = {
     results: "Key Results",
     nextCase: "Next case study",
     backToAll: "View all",
+    viewCase: "View",
   },
   ar: {
     back: "العودة إلى دراسات الحالة",
