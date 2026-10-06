@@ -36,29 +36,45 @@ const translations = {
 const projects = [
   {
     title: "Ewano",
-    category: "FinTech",
-    description: "پلتفرم بانکداری و خدمات مالی دیجیتال",
+    category: { fa: "فین‌تک", en: "FinTech", ar: "التكنولوجيا المالية" },
+    description: {
+      fa: "پلتفرم بانکداری و خدمات مالی دیجیتال با تمرکز بر تجربه کاربری روان",
+      en: "Digital banking and financial services platform focused on smooth UX",
+      ar: "منصة مصرفية ومالية رقمية تركز على تجربة سلسة",
+    },
     color: "from-blue-500/20 to-cyan-500/20",
     accent: "#3B82F6",
   },
   {
     title: "Postex",
-    category: "Logistics",
-    description: "پلتفرم مدیریت لجستیک و ارسال مرسولات",
+    category: { fa: "لجستیک", en: "Logistics", ar: "الخدمات اللوجستية" },
+    description: {
+      fa: "پلتفرم مدیریت لجستیک و ارسال مرسولات با بهینه‌سازی workflow",
+      en: "Logistics and shipment management platform with workflow optimization",
+      ar: "منصة إدارة الشحنات واللوجستيات مع تحسين سير العمل",
+    },
     color: "from-orange-500/20 to-red-500/20",
     accent: "#FF6B35",
   },
   {
     title: "Vardast",
-    category: "Marketplace",
-    description: "مارکت‌پلیس B2B و B2C ساختمانی",
+    category: { fa: "مارکت‌پلیس", en: "Marketplace", ar: "السوق" },
+    description: {
+      fa: "مارکت‌پلیس B2B و B2C ساختمانی با تمرکز بر onboarding فروشندگان",
+      en: "B2B & B2C construction marketplace focused on seller onboarding",
+      ar: "سوق بناء B2B و B2C يركز على تسجيل البائعين",
+    },
     color: "from-purple-500/20 to-pink-500/20",
     accent: "#8B5CF6",
   },
   {
     title: "Kayak",
-    category: "Travel",
-    description: "پلتفرم جستجوی سفر و بلیط",
+    category: { fa: "سفر", en: "Travel", ar: "السفر" },
+    description: {
+      fa: "پلتفرم جستجوی سفر و بلیط با رابط کاربری مدرن",
+      en: "Travel and ticket search platform with modern UI",
+      ar: "منصة البحث عن السفر والتذاكر بواجهة حديثة",
+    },
     color: "from-emerald-500/20 to-teal-500/20",
     accent: "#10B981",
   },
@@ -116,7 +132,6 @@ export default function FeaturedWorks() {
                 data-cursor-label={t.cursorLabel}
               >
                 <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--section-card-border)] hover:border-[var(--color-primary)] transition-all duration-500">
-                  {/* Visual Placeholder */}
                   <div
                     className={`aspect-[4/3] bg-gradient-to-br ${project.color} relative overflow-hidden`}
                   >
@@ -128,20 +143,17 @@ export default function FeaturedWorks() {
                         {project.title}
                       </span>
                     </div>
-
-                    {/* Category Badge */}
                     <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-bold">
-                      {project.category}
+                      {project.category[locale]}
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-6 md:p-8">
                     <h3 className="text-2xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">
                       {project.title}
                     </h3>
                     <p className="text-[var(--color-text-muted)] text-sm mb-4">
-                      {project.description}
+                      {project.description[locale]}
                     </p>
                     <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
                       {t.viewCase}

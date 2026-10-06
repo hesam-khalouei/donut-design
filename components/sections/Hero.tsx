@@ -9,47 +9,47 @@ import Button from "@/components/ui/Button";
 const translations = {
   fa: {
     badge: "آژانس طراحی محصولات دیجیتال",
-    titleLine1: "تجربه‌های دیجیتال،",
-    titleLine2: "با طعم متفاوت",
+    titleLine1: "محصولات دیجیتال،",
+    titleLine2: "با تمرکز بر تجربه",
     description:
-      "ما محصولات دیجیتالی می‌سازیم که کار می‌کنن — با تمرکز بر تجربه کاربری، دیزاین سیستم، و تصمیم‌های داده‌محور.",
+      "بیش از ۷ سال تجربه در طراحی محصولات پیچیده B2B و B2C در حوزه‌های فین‌تک، SaaS، لجستیک و مارکت‌پلیس. متخصص در ساده‌سازی فرایندهای پیچیده و ساخت دیزاین سیستم‌های مقیاس‌پذیر.",
     ctaPrimary: "شروع پروژه",
     ctaSecondary: "مشاهده نمونه‌کارها",
     stats: [
       { value: "+۷", label: "سال تجربه" },
       { value: "+۴۰", label: "پروژه موفق" },
       { value: "٪۴۰", label: "بهبود بهره‌وری" },
-      { value: "+۱۱", label: "حوزه تخصصی" },
+      { value: "۲", label: "دیزاین سیستم" },
     ],
   },
   en: {
     badge: "Digital Product Design Agency",
-    titleLine1: "Digital experiences,",
-    titleLine2: "with a different taste",
+    titleLine1: "Digital products,",
+    titleLine2: "focused on experience",
     description:
-      "We build digital products that work — focused on UX, design systems, and data-informed decisions.",
+      "7+ years designing complex B2B and B2C products across FinTech, SaaS, Logistics, and Marketplace. Specialized in simplifying complex workflows and building scalable design systems.",
     ctaPrimary: "Start a project",
     ctaSecondary: "View our work",
     stats: [
       { value: "7+", label: "Years Experience" },
       { value: "40+", label: "Projects Delivered" },
       { value: "40%", label: "Efficiency Gain" },
-      { value: "11+", label: "Domains" },
+      { value: "2", label: "Design Systems" },
     ],
   },
   ar: {
     badge: "وكالة تصميم المنتجات الرقمية",
-    titleLine1: "تجارب رقمية،",
-    titleLine2: "بمذاق مختلف",
+    titleLine1: "منتجات رقمية،",
+    titleLine2: "بتركيز على التجربة",
     description:
-      "نبني منتجات رقمية تعمل — بتركيز على تجربة المستخدم وأنظمة التصميم والقرارات المبنية على البيانات.",
+      "أكثر من 7 سنوات من الخبرة في تصميم منتجات B2B و B2C المعقدة في مجالات التكنولوجيا المالية و SaaS والخدمات اللوجستية والأسواق. متخصص في تبسيط سير العمل المعقد وبناء أنظمة تصميم قابلة للتوسع.",
     ctaPrimary: "ابدأ مشروعك",
     ctaSecondary: "شاهد أعمالنا",
     stats: [
       { value: "+7", label: "سنوات خبرة" },
       { value: "+40", label: "مشروع ناجح" },
       { value: "40%", label: "تحسين الكفاءة" },
-      { value: "+11", label: "مجال تخصص" },
+      { value: "2", label: "نظام تصميم" },
     ],
   },
 };
@@ -68,13 +68,11 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // افکت پارالکس
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
 
-  // انیمیشن‌های ورود
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -100,7 +98,6 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
     >
-      {/* گرادینت‌های تزئینی */}
       <motion.div
         style={{ y: y1 }}
         className="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-[var(--color-primary)] opacity-20 blur-[120px] rounded-full pointer-events-none"
@@ -110,7 +107,6 @@ export default function Hero() {
         className="absolute bottom-0 -left-32 w-[400px] h-[400px] bg-[var(--color-primary)] opacity-10 blur-[100px] rounded-full pointer-events-none"
       />
 
-      {/* گرید تزئینی */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -131,7 +127,6 @@ export default function Hero() {
           animate="visible"
           className="max-w-4xl mx-auto text-center"
         >
-          {/* Badge */}
           <motion.div variants={itemVariants} className="mb-8">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-sm font-medium border border-[var(--color-primary)]/20">
               <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
@@ -139,7 +134,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Title */}
           <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 tracking-tight"
@@ -150,7 +144,6 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Description */}
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-10 leading-relaxed"
@@ -158,7 +151,6 @@ export default function Hero() {
             {t.description}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap gap-4 justify-center mb-20"
@@ -184,7 +176,6 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             variants={itemVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto"
@@ -203,7 +194,6 @@ export default function Hero() {
         </motion.div>
       </Container>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

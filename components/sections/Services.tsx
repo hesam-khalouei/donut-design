@@ -9,140 +9,133 @@ const translations = {
   fa: {
     label: "خدمات ما",
     title: "چیزی که برات می‌سازیم",
-    subtitle:
-      "از ایده تا محصول نهایی، با تمرکز بر تجربه کاربری و تصمیم‌های داده‌محور",
-    services: [
+    description:
+      "از ایده تا محصول نهایی — با تمرکز بر تجربه کاربری و تصمیم‌های داده‌محور.",
+    items: [
       {
+        icon: "🎨",
         title: "طراحی محصول",
         description:
-          "از discovery تا high-fidelity، محصولاتی می‌سازیم که کاربر واقعاً دوستشون داره.",
-        icon: "palette",
+          "از کشف نیاز تا محصول نهایی. طراحی جریان‌های کاربری، وایرفریم، پروتوتایپ و رابط کاربری نهایی.",
       },
       {
+        icon: "🧩",
         title: "دیزاین سیستم",
         description:
-          "سیستم‌های طراحی مقیاس‌پذیر برای تیم‌هایی که می‌خوان سریع‌تر رشد کنن.",
-        icon: "grid",
+          "ساخت و مقیاس‌دهی دیزاین سیستم‌های شرکتی. توکن‌های طراحی، کتابخانه کامپوننت و مستندسازی.",
       },
       {
+        icon: "🔍",
         title: "پژوهش کاربر",
         description:
-          "تحقیقات کاربری عمیق برای تصمیم‌هایی که به داده‌ها وابسته‌ست، نه حدس.",
-        icon: "search",
+          "مصاحبه کاربر، تست قابلیت استفاده، و تحلیل داده‌های رفتاری برای تصمیم‌های مطمئن.",
       },
       {
-        title: "مشاوره طراحی",
+        icon: "⚡",
+        title: "بهینه‌سازی UX",
         description:
-          "کمک به تیم‌ها برای بهبود فرایند طراحی، استخدام، و ساخت محصول.",
-        icon: "sparkles",
+          "بازطراحی جریان‌های موجود، کاهش اصطکاک، و افزایش نرخ تکمیل تسک‌ها.",
+      },
+      {
+        icon: "📊",
+        title: "Process Mining",
+        description:
+          "تحلیل فرایندهای عملیاتی با تکنیک‌های process mining برای بهبود بهره‌وری.",
+      },
+      {
+        icon: "🚀",
+        title: "استراتژی محصول",
+        description:
+          "تعریف چشم‌انداز، اولویت‌بندی فیچرها، نقشه راه، و مشاوره محصول.",
       },
     ],
   },
   en: {
-    label: "Our services",
+    label: "Our Services",
     title: "What we build for you",
-    subtitle:
-      "From idea to final product, focused on UX and data-informed decisions",
-    services: [
+    description:
+      "From idea to final product — focused on UX and data-informed decisions.",
+    items: [
       {
+        icon: "🎨",
         title: "Product Design",
         description:
-          "From discovery to high-fidelity, we build products users actually love.",
-        icon: "palette",
+          "From discovery to final product. User flows, wireframes, prototypes, and final UI.",
       },
       {
+        icon: "🧩",
         title: "Design Systems",
         description:
-          "Scalable design systems for teams that want to move faster.",
-        icon: "grid",
+          "Building and scaling company-wide design systems. Design tokens, component libraries, and documentation.",
       },
       {
+        icon: "🔍",
         title: "User Research",
         description:
-          "Deep user research for decisions backed by data, not guesses.",
-        icon: "search",
+          "User interviews, usability testing, and behavioral data analysis for confident decisions.",
       },
       {
-        title: "Design Consulting",
+        icon: "⚡",
+        title: "UX Optimization",
         description:
-          "Helping teams improve design process, hiring, and product build.",
-        icon: "sparkles",
+          "Redesigning existing flows, reducing friction, and increasing task completion rates.",
+      },
+      {
+        icon: "📊",
+        title: "Process Mining",
+        description:
+          "Analyzing operational workflows with process mining techniques to improve efficiency.",
+      },
+      {
+        icon: "🚀",
+        title: "Product Strategy",
+        description:
+          "Defining vision, prioritizing features, roadmap, and product advisory.",
       },
     ],
   },
   ar: {
     label: "خدماتنا",
     title: "ما نبنيه لك",
-    subtitle:
-      "من الفكرة إلى المنتج النهائي، بتركيز على تجربة المستخدم والقرارات المبنية على البيانات",
-    services: [
+    description:
+      "من الفكرة إلى المنتج النهائي — بتركيز على تجربة المستخدم والقرارات المبنية على البيانات.",
+    items: [
       {
+        icon: "🎨",
         title: "تصميم المنتج",
         description:
-          "من الاكتشاف إلى الدقة العالية، نبني منتجات يحبها المستخدمون.",
-        icon: "palette",
+          "من الاكتشاف إلى المنتج النهائي. تدفقات المستخدم والإطارات والنماذج والواجهة النهائية.",
       },
       {
+        icon: "🧩",
         title: "أنظمة التصميم",
-        description: "أنظمة تصميم قابلة للتوسع للفرق التي تريد التحرك أسرع.",
-        icon: "grid",
+        description:
+          "بناء وتوسيع أنظمة التصميم على مستوى الشركة. رموز التصميم ومكتبات المكونات والتوثيق.",
       },
       {
+        icon: "🔍",
         title: "أبحاث المستخدم",
         description:
-          "أبحاث مستخدم عميقة لقرارات مدعومة بالبيانات، لا بالتخمين.",
-        icon: "search",
+          "مقابلات المستخدم واختبار قابلية الاستخدام وتحليل البيانات السلوكية.",
       },
       {
-        title: "استشارات التصميم",
-        description: "مساعدة الفرق على تحسين عملية التصميم والتوظيف والبناء.",
-        icon: "sparkles",
+        icon: "⚡",
+        title: "تحسين تجربة المستخدم",
+        description:
+          "إعادة تصميم التدفقات الحالية وتقليل الاحتكاك وزيادة معدلات إكمال المهام.",
+      },
+      {
+        icon: "📊",
+        title: "تحليل العمليات",
+        description: "تحليل سير العمل التشغيلي بتقنيات process mining لتحسين الكفاءة.",
+      },
+      {
+        icon: "🚀",
+        title: "استراتيجية المنتج",
+        description: "تحديد الرؤية وترتيب الميزات وخارطة الطريق واستشارات المنتج.",
       },
     ],
   },
-};
-
-const iconMap: Record<string, React.ReactNode> = {
-  palette: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-      />
-    </svg>
-  ),
-  grid: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-      />
-    </svg>
-  ),
-  search: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-      />
-    </svg>
-  ),
-  sparkles: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={1.5}
-        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-      />
-    </svg>
-  ),
 };
 
 export default function Services() {
@@ -154,42 +147,42 @@ export default function Services() {
   const t = translations[locale];
 
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg)]">
+    <section className="py-20 md:py-32 relative overflow-hidden">
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-16"
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-16 md:mb-20"
         >
-          <span className="text-sm font-medium text-[var(--color-primary)] uppercase tracking-wider">
+          <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
             {t.label}
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-4 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-6">
             {t.title}
           </h2>
-          <p className="text-lg text-[var(--color-text-muted)]">
-            {t.subtitle}
+          <p className="text-lg text-[var(--color-text-muted)] leading-relaxed">
+            {t.description}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {t.services.map((service, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {t.items.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
             >
               <Card className="h-full group">
-                <div className="w-12 h-12 rounded-[var(--radius-md)] bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] flex items-center justify-center mb-5 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors duration-300">
-                  {iconMap[service.icon]}
+                <div className="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300 inline-block">
+                  {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-[var(--color-text-muted)] leading-relaxed">
-                  {service.description}
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-[var(--color-text-muted)] leading-relaxed text-sm">
+                  {item.description}
                 </p>
               </Card>
             </motion.div>
