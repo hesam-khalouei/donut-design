@@ -21,7 +21,6 @@ const iranYekanX = localFont({
   display: "swap",
 });
 
-// ---------- فونت انگلیسی تیتر: Poppins ----------
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -29,14 +28,12 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// ---------- فونت انگلیسی بادی: DM Sans ----------
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
 });
 
-// ---------- فونت عربی: IBM Plex Sans Arabic ----------
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
@@ -44,7 +41,6 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 
-// ---------- متادیتا ----------
 export const metadata: Metadata = {
   title: {
     default: "Donut Design | طراحی محصولات دیجیتال",
@@ -55,7 +51,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://donutdesign.ir"),
 };
 
-// ---------- Root Layout ----------
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -64,6 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="fa"
+      dir="rtl"
       className={`${iranYekanX.variable} ${poppins.variable} ${dmSans.variable} ${ibmPlexArabic.variable}`}
       suppressHydrationWarning
     >

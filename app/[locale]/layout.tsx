@@ -18,7 +18,6 @@ const dirMap: Record<Locale, "rtl" | "ltr"> = {
   ar: "rtl",
 };
 
-// ⚠️ metadata باید بیرون از کامپوننت باشه
 export const metadata: Metadata = {
   robots: {
     index: false,

@@ -3,13 +3,14 @@ import { ReactNode } from "react";
 interface ContainerProps {
   children: ReactNode;
   className?: string;
-  size?: "sm" | "md" | "lg" | "full";
+  size?: "sm" | "md" | "lg" | "xl" | "full";
 }
 
 const sizeClasses = {
   sm: "max-w-3xl",
   md: "max-w-5xl",
   lg: "max-w-7xl",
+  xl: "max-w-[90rem]",
   full: "max-w-full",
 };
 

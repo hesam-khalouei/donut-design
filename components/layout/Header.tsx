@@ -17,7 +17,7 @@ const navItems = [
   },
   { href: "/about", label: { fa: "درباره ما", en: "About", ar: "من نحن" } },
   { href: "/blog", label: { fa: "بلاگ", en: "Blog", ar: "المدونة" } },
-  { href: "/faq", label: { fa: "سوالات متداول", en: "FAQ", ar: "الأسئلة الشائعة" } },
+  { href: "/faq", label: { fa: "سوالات", en: "FAQ", ar: "الأسئلة" } },
 ];
 
 const ctaLabel = {
@@ -55,22 +55,24 @@ export default function Header() {
       }`}
     >
       <Container>
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20 gap-4">
+          {/* Logo */}
           <Link
             href={`/${locale}`}
-            className="text-xl md:text-2xl font-black tracking-tight"
+            className="text-xl md:text-2xl font-black tracking-tight shrink-0"
           >
             Donut<span className="text-[var(--color-primary)]">.</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
             {navItems.map((item) => {
               const isActive = pathname.includes(item.href);
               return (
                 <Link
                   key={item.href}
                   href={`/${locale}${item.href}`}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                     isActive
                       ? "text-[var(--color-primary)] bg-[var(--color-primary-light)]"
                       : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
@@ -82,7 +84,8 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          {/* Actions */}
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <ThemeSwitcher />
             <LanguageSwitcher />
             <div className="hidden md:block">
@@ -118,13 +121,14 @@ export default function Header() {
         </div>
       </Container>
 
+      {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden overflow-hidden transition-all duration-300 bg-[var(--color-bg)] border-b border-[var(--color-border)] ${
           mobileOpen ? "max-h-[700px]" : "max-h-0"
         }`}
       >
         <Container>
-          <nav className="py-6 flex flex-col gap-1 border-t border-[var(--color-border)]">
+          <nav className="py-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -138,9 +142,13 @@ export default function Header() {
               href={`/${locale}/careers`}
               className="px-4 py-3 rounded-[var(--radius-md)] text-base font-medium hover:bg-[var(--color-bg-alt)] transition-colors"
             >
-              {locale === "fa" ? "فرصت‌های شغلی" : locale === "ar" ? "الوظائف" : "Careers"}
+              {locale === "fa"
+                ? "فرصت‌های شغلی"
+                : locale === "ar"
+                ? "الوظائف"
+                : "Careers"}
             </Link>
-            <div className="mt-4">
+            <div className="mt-3">
               <Button href={`/${locale}/contact`} className="w-full">
                 {ctaLabel[locale]}
               </Button>
