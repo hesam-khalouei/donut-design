@@ -127,14 +127,14 @@ export default function Footer() {
   const t = translations[locale];
 
   const quickLinks = [
-    { href: `/${locale}`, label: t.links.home },
-    { href: `/${locale}/about`, label: t.links.about },
-    { href: `/${locale}/works`, label: t.links.works },
-    { href: `/${locale}/blog`, label: t.links.blog },
-    { href: `/${locale}/faq`, label: t.links.faq },
-    { href: `/${locale}/careers`, label: t.links.careers },
-    { href: `/${locale}/contact`, label: t.links.contact },
-  ];
+  { href: `/${locale}`, label: t.links.home },
+  { href: `/${locale}/about`, label: t.links.about },
+  { href: `/${locale}/works`, label: t.links.works },
+  { href: `/${locale}/blog`, label: t.links.blog },
+  { href: `/${locale}/faq`, label: t.links.faq },
+  { href: `/${locale}/careers`, label: t.links.careers },
+  { href: `/${locale}/contact`, label: t.links.contact },
+];
 
   const servicesList = [
     { href: `/${locale}/services`, label: t.servicesList.product },
@@ -240,10 +240,35 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/40 text-sm">
               © {new Date().getFullYear()} Donut Design. {t.rights}
             </p>
+
+            <div className="flex items-center gap-4 text-xs text-white/40">
+              <Link
+                href={`/${locale}/privacy`}
+                className="hover:text-[var(--color-primary)] transition-colors"
+              >
+                {locale === "fa"
+                  ? "حریم خصوصی"
+                  : locale === "ar"
+                  ? "الخصوصية"
+                  : "Privacy"}
+              </Link>
+              <span>·</span>
+              <Link
+                href={`/${locale}/terms`}
+                className="hover:text-[var(--color-primary)] transition-colors"
+              >
+                {locale === "fa"
+                  ? "شرایط استفاده"
+                  : locale === "ar"
+                  ? "الشروط"
+                  : "Terms"}
+              </Link>
+            </div>
+
             <p className="text-white/40 text-xs">
               Designed & built with{" "}
               <span className="text-[var(--color-primary)]">♥</span>
