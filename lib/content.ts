@@ -1,19 +1,17 @@
 import {
   getWPPosts,
   getWPPostBySlug,
-  getWPCaseStudies,
-  getWPCaseStudyBySlug,
   stripHTML,
   decodeHTMLEntities,
+  type WPPost,
 } from "./wordpress";
-import { posts as localPosts, Post as LocalPost, getPostBySlug as getLocalPostBySlug } from "./posts";
+import { posts as localPosts, getPostBySlug as getLocalPost } from "./posts";
 
-// ---------- Unified Post Type ----------
 export interface UnifiedPost {
   slug: string;
-  title: Record<string, string>;
-  excerpt: Record<string, string>;
-  content: Record<string, string>;
+  title: string;
+  excerpt: string;
+  content: string;
   category: string;
   tags: string[];
   author: { name: string; initial: string };
@@ -21,77 +19,98 @@ export interface UnifiedPost {
   readTime: number;
   coverColor: string;
   coverAccent: string;
+  source: "wordpress" | "local";
 }
 
-// ---------- Convert WP Post → Unified ----------
-function wpPostToUnified(wpPost: any, locale: string): UnifiedPost {
+function calculateReadTime(text: string): number {
+  const words = stripHTML(text).split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+function wpPostToUnified(wpPost: WPPost): UnifiedPost {
+  const title = decodeHTMLEntities(wpPost.title.rendered);
+  const content = wpPost.content.rendered;
+  const excerpt = stripHTML(decodeHTMLEntities(wpPost.excerpt.rendered));
+
+  // رنگ‌های پیش‌فرض (بعداً از ACF می‌گیریم)
+  const colors = [
+    { color: "from-blue-500/20 to-cyan-500/20", accent: "#3B82F6" },
+    { color: "from-purple-500/20 to-pink-500/20", accent: "#8B5CF6" },
+    { color: "from-emerald-500/20 to-teal-500/20", accent: "#10B981" },
+    { color: "from-orange-500/20 to-red-500/20", accent: "#FF6B35" },
+    { color: "from-indigo-500/20 to-blue-500/20", accent: "#6366F1" },
+  ];
+  const colorSet = colors[wpPost.id % colors.length];
+
   return {
     slug: wpPost.slug,
-    title: { [locale]: decodeHTMLEntities(wpPost.title.rendered) },
-    excerpt: { [locale]: stripHTML(wpPost.excerpt.rendered) },
-    content: { [locale]: wpPost.content.rendered },
-    category: "design-system",
+    title,
+    excerpt,
+    content,
+    category: "wordpress",
     tags: [],
     author: { name: "Donut Design", initial: "D" },
     date: wpPost.date,
-    readTime: Math.ceil(stripHTML(wpPost.content.rendered).split(" ").length / 200),
-    coverColor: "from-blue-500/20 to-cyan-500/20",
-    coverAccent: "#3B82F6",
+    readTime: calculateReadTime(content),
+    coverColor: colorSet.color,
+    coverAccent: colorSet.accent,
+    source: "wordpress",
   };
 }
 
-// ---------- Get Posts (WP first, then local) ----------
 export async function getAllPosts(): Promise<UnifiedPost[]> {
+  // اول وردپرس
   const wpPosts = await getWPPosts();
 
   if (wpPosts && wpPosts.length > 0) {
-    // اگه وردپرس دیتا داشت، از اون استفاده کن
-    return wpPosts.map((p) => wpPostToUnified(p, "fa"));
+    console.log(`✅ Loaded ${wpPosts.length} posts from WordPress`);
+    return wpPosts.map(wpPostToUnified);
   }
 
-  // در غیر این صورت، از دیتای محلی استفاده کن
+  // Fallback: دیتای محلی
+  console.log("⚠️ WordPress unavailable, using local posts");
   return localPosts.map((lp) => ({
-    ...lp,
-    title: lp.title,
-    excerpt: lp.excerpt,
-    content: lp.content,
+    slug: lp.slug,
+    title: lp.title.fa,
+    excerpt: lp.excerpt.fa,
+    content: lp.content.fa,
+    category: lp.category,
+    tags: lp.tags,
+    author: lp.author,
+    date: lp.date,
+    readTime: lp.readTime,
+    coverColor: lp.coverColor,
+    coverAccent: lp.coverAccent,
+    source: "local" as const,
   }));
 }
 
-export async function getPost(slug: string, locale: string): Promise<UnifiedPost | null> {
+export async function getPost(slug: string): Promise<UnifiedPost | null> {
+  // اول وردپرس
   const wpPost = await getWPPostBySlug(slug);
 
   if (wpPost) {
-    return wpPostToUnified(wpPost, locale);
+    return wpPostToUnified(wpPost);
   }
 
-  // Fallback به دیتای محلی
-  const localPost = getLocalPostBySlug(slug);
+  // Fallback: دیتای محلی
+  const localPost = getLocalPost(slug);
   if (localPost) {
     return {
-      ...localPost,
-      title: localPost.title,
-      excerpt: localPost.excerpt,
-      content: localPost.content,
+      slug: localPost.slug,
+      title: localPost.title.fa,
+      excerpt: localPost.excerpt.fa,
+      content: localPost.content.fa,
+      category: localPost.category,
+      tags: localPost.tags,
+      author: localPost.author,
+      date: localPost.date,
+      readTime: localPost.readTime,
+      coverColor: localPost.coverColor,
+      coverAccent: localPost.coverAccent,
+      source: "local" as const,
     };
   }
 
-  return null;
-}
-
-// ---------- Case Studies ----------
-export async function getAllCaseStudies() {
-  const wpItems = await getWPCaseStudies();
-  if (wpItems && wpItems.length > 0) {
-    return wpItems;
-  }
-  return null;
-}
-
-export async function getCaseStudy(slug: string) {
-  const wpItem = await getWPCaseStudyBySlug(slug);
-  if (wpItem) {
-    return wpItem;
-  }
   return null;
 }

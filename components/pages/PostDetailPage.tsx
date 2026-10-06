@@ -1,40 +1,55 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import FinalCTA from "@/components/sections/FinalCTA";
-import { getPostBySlug, posts, categories } from "@/lib/posts";
+
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string[];
+  author: { name: string; initial: string };
+  date: string;
+  readTime: number;
+  coverColor: string;
+  coverAccent: string;
+  source: "wordpress" | "local";
+}
 
 const translations = {
   fa: {
     back: "بازگشت به بلاگ",
-    share: "اشتراک‌گذاری",
     tags: "برچسب‌ها",
     relatedPosts: "مقالات مرتبط",
     readMore: "ادامه مطلب",
     readTime: "دقیقه",
+    loading: "در حال بارگذاری...",
     notFound: "مقاله یافت نشد",
     backHome: "بازگشت به خانه",
   },
   en: {
     back: "Back to blog",
-    share: "Share",
     tags: "Tags",
     relatedPosts: "Related articles",
     readMore: "Read more",
     readTime: "min read",
+    loading: "Loading...",
     notFound: "Post not found",
     backHome: "Back to home",
   },
   ar: {
     back: "العودة إلى المدونة",
-    share: "مشاركة",
     tags: "الوسوم",
     relatedPosts: "مقالات ذات صلة",
     readMore: "اقرأ المزيد",
     readTime: "دقيقة",
+    loading: "جارٍ التحميل...",
     notFound: "المقال غير موجود",
     backHome: "العودة إلى الرئيسية",
   },
@@ -63,72 +78,6 @@ function formatDate(dateStr: string, locale: string) {
   });
 }
 
-// تبدیل Markdown ساده به HTML
-function renderContent(content: string) {
-  const lines = content.split("\n");
-  const elements: React.ReactNode[] = [];
-  let inCodeBlock = false;
-  let codeBuffer: string[] = [];
-  let key = 0;
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    if (line.startsWith("```")) {
-      if (inCodeBlock) {
-        elements.push(
-          <pre
-            key={key++}
-            className="my-6 p-4 rounded-[var(--radius-md)] bg-[var(--color-bg-dark)] text-white text-sm overflow-x-auto"
-            dir="ltr"
-          >
-            <code>{codeBuffer.join("\n")}</code>
-          </pre>
-        );
-        codeBuffer = [];
-        inCodeBlock = false;
-      } else {
-        inCodeBlock = true;
-      }
-      continue;
-    }
-
-    if (inCodeBlock) {
-      codeBuffer.push(line);
-      continue;
-    }
-
-    if (line.startsWith("## ")) {
-      elements.push(
-        <h2 key={key++} className="text-2xl md:text-3xl font-black mt-12 mb-5">
-          {line.replace("## ", "")}
-        </h2>
-      );
-    } else if (line.trim() === "") {
-      continue;
-    } else {
-      // Bold markdown
-      const parts = line.split(/(\*\*[^*]+\*\*)/g);
-      elements.push(
-        <p key={key++} className="text-lg leading-relaxed mb-5 text-[var(--color-text-muted)]">
-          {parts.map((part, idx) => {
-            if (part.startsWith("**") && part.endsWith("**")) {
-              return (
-                <strong key={idx} className="text-[var(--color-text)] font-bold">
-                  {part.slice(2, -2)}
-                </strong>
-              );
-            }
-            return part;
-          })}
-        </p>
-      );
-    }
-  }
-
-  return elements;
-}
-
 export default function PostDetailPage({
   locale,
   slug,
@@ -140,7 +89,41 @@ export default function PostDetailPage({
     ? (locale as "fa" | "en" | "ar")
     : "fa";
   const t = translations[validLocale];
-  const post = getPostBySlug(slug);
+
+  const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPost() {
+      try {
+        const res = await fetch(`/api/posts/${slug}`);
+        if (!res.ok) {
+          setPost(null);
+          return;
+        }
+        const data = await res.json();
+        setPost(data);
+      } catch (error) {
+        console.error("Failed to load post:", error);
+        setPost(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <Container>
+          <p className="text-center text-[var(--color-text-muted)]">
+            {t.loading}
+          </p>
+        </Container>
+      </main>
+    );
+  }
 
   if (!post) {
     return (
@@ -154,10 +137,6 @@ export default function PostDetailPage({
       </main>
     );
   }
-
-  const relatedPosts = posts
-    .filter((p) => p.slug !== post.slug && p.category === post.category)
-    .slice(0, 3);
 
   return (
     <main>
@@ -192,20 +171,15 @@ export default function PostDetailPage({
               {t.back}
             </Link>
 
-            <Link
-              href={`/${validLocale}/blog?category=${post.category}`}
-              className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5"
-            >
-              {categories[post.category as keyof typeof categories][validLocale]}
-            </Link>
-
             <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
-              {post.title[validLocale]}
+              {post.title}
             </h1>
 
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed mb-8">
-              {post.excerpt[validLocale]}
-            </p>
+            {post.excerpt && (
+              <p className="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed mb-8">
+                {post.excerpt}
+              </p>
+            )}
 
             <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-[var(--color-border)]">
               <div className="flex items-center gap-3">
@@ -239,7 +213,7 @@ export default function PostDetailPage({
                 className="text-6xl md:text-8xl font-black opacity-30 px-8 text-center leading-tight"
                 style={{ color: post.coverAccent }}
               >
-                {categories[post.category as keyof typeof categories][validLocale]}
+                {post.title}
               </span>
             </div>
           </motion.div>
@@ -253,12 +227,13 @@ export default function PostDetailPage({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="max-w-3xl mx-auto"
-          >
-            {renderContent(post.content[validLocale])}
+            className="max-w-3xl mx-auto prose-content"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-            {/* Tags */}
-            <div className="mt-16 pt-8 border-t border-[var(--color-border)]">
+          {/* Tags */}
+          {post.tags.length > 0 && (
+            <div className="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--color-border)]">
               <div className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)] mb-4">
                 {t.tags}
               </div>
@@ -274,43 +249,9 @@ export default function PostDetailPage({
                 ))}
               </div>
             </div>
-          </motion.article>
+          )}
         </Container>
       </section>
-
-      {/* Related */}
-      {relatedPosts.length > 0 && (
-        <section className="py-20 bg-[var(--color-bg-alt)]">
-          <Container>
-            <h2 className="text-3xl font-black mb-10 text-center">
-              {t.relatedPosts}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {relatedPosts.map((rp) => (
-                <Link
-                  key={rp.slug}
-                  href={`/${validLocale}/blog/${rp.slug}`}
-                  className="group block"
-                >
-                  <div className="rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-[var(--color-bg)]">
-                    <div
-                      className={`aspect-[16/10] bg-gradient-to-br ${rp.coverColor}`}
-                    />
-                    <div className="p-5">
-                      <h3 className="font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors text-sm leading-snug">
-                        {rp.title[validLocale]}
-                      </h3>
-                      <span className="text-xs text-[var(--color-text-muted)]">
-                        {rp.readTime} {t.readTime}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
 
       <FinalCTA />
     </main>
