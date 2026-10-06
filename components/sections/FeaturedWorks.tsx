@@ -10,118 +10,59 @@ const translations = {
   fa: {
     label: "نمونه‌کارها",
     title: "پروژه‌های منتخب",
-    subtitle: "نگاهی به بعضی از کارهایی که بهشون افتخار می‌کنیم",
-    cta: "مشاهده همه نمونه‌کارها",
-    viewCase: "مشاهده",
-    projects: [
-      {
-        title: "Ewano",
-        category: "بانکداری دیجیتال",
-        description:
-          "پلتفرم بانکداری دیجیتال و مالی با تمرکز بر تجربه کاربری روان",
-        gradient: "from-orange-400 to-red-500",
-        year: "1403",
-      },
-      {
-        title: "Postex",
-        category: "لجستیک و ارسال",
-        description: "پلتفرم مدیریت ارسال و لجستیک با بهینه‌سازی workflow",
-        gradient: "from-blue-500 to-purple-600",
-        year: "1403",
-      },
-      {
-        title: "Vardast",
-        category: "Marketplace",
-        description: "پلتفرم B2B و B2C ساخت‌وساز با تمرکز بر onboarding",
-        gradient: "from-green-400 to-teal-600",
-        year: "1402",
-      },
-      {
-        title: "Kayak",
-        category: "سفر",
-        description: "موتور جستجوی سفر با رابط کاربری مدرن و سریع",
-        gradient: "from-pink-500 to-rose-500",
-        year: "1402",
-      },
-    ],
+    description: "بعضی از کارهایی که بهشون افتخار می‌کنیم.",
+    viewAll: "مشاهده همه پروژه‌ها",
+    viewCase: "مطالعه موردی",
+    cursorLabel: "مشاهده",
   },
   en: {
-    label: "Selected work",
-    title: "Featured projects",
-    subtitle: "A look at some of the work we're proud of",
-    cta: "View all work",
-    viewCase: "View",
-    projects: [
-      {
-        title: "Ewano",
-        category: "Digital Banking",
-        description:
-          "Digital banking and financial platform focused on smooth UX",
-        gradient: "from-orange-400 to-red-500",
-        year: "2024",
-      },
-      {
-        title: "Postex",
-        category: "Logistics",
-        description:
-          "Shipment and logistics management platform with workflow optimization",
-        gradient: "from-blue-500 to-purple-600",
-        year: "2024",
-      },
-      {
-        title: "Vardast",
-        category: "Marketplace",
-        description: "B2B & B2C construction marketplace with onboarding focus",
-        gradient: "from-green-400 to-teal-600",
-        year: "2023",
-      },
-      {
-        title: "Kayak",
-        category: "Travel",
-        description: "Travel metasearch with modern, fast interface",
-        gradient: "from-pink-500 to-rose-500",
-        year: "2023",
-      },
-    ],
+    label: "Our Work",
+    title: "Selected projects",
+    description: "Some of the work we're proud of.",
+    viewAll: "View all projects",
+    viewCase: "Read case study",
+    cursorLabel: "View",
   },
   ar: {
-    label: "أعمال مختارة",
-    title: "مشاريع مميزة",
-    subtitle: "نظرة على بعض الأعمال التي نفخر بها",
-    cta: "عرض جميع الأعمال",
-    viewCase: "عرض",
-    projects: [
-      {
-        title: "Ewano",
-        category: "الخدمات المصرفية الرقمية",
-        description: "منصة مصرفية ومالية رقمية تركز على تجربة سلسة",
-        gradient: "from-orange-400 to-red-500",
-        year: "2024",
-      },
-      {
-        title: "Postex",
-        category: "اللوجستيات",
-        description: "منصة إدارة الشحنات واللوجستيات مع تحسين سير العمل",
-        gradient: "from-blue-500 to-purple-600",
-        year: "2024",
-      },
-      {
-        title: "Vardast",
-        category: "السوق",
-        description: "سوق بناء B2B و B2C مع التركيز على التسجيل",
-        gradient: "from-green-400 to-teal-600",
-        year: "2023",
-      },
-      {
-        title: "Kayak",
-        category: "السفر",
-        description: "محرك بحث سفر بواجهة حديثة وسريعة",
-        gradient: "from-pink-500 to-rose-500",
-        year: "2023",
-      },
-    ],
+    label: "أعمالنا",
+    title: "مشاريع مختارة",
+    description: "بعض الأعمال التي نفتخر بها.",
+    viewAll: "عرض جميع المشاريع",
+    viewCase: "اقرأ دراسة الحالة",
+    cursorLabel: "عرض",
   },
 };
+
+const projects = [
+  {
+    title: "Ewano",
+    category: "FinTech",
+    description: "پلتفرم بانکداری و خدمات مالی دیجیتال",
+    color: "from-blue-500/20 to-cyan-500/20",
+    accent: "#3B82F6",
+  },
+  {
+    title: "Postex",
+    category: "Logistics",
+    description: "پلتفرم مدیریت لجستیک و ارسال مرسولات",
+    color: "from-orange-500/20 to-red-500/20",
+    accent: "#FF6B35",
+  },
+  {
+    title: "Vardast",
+    category: "Marketplace",
+    description: "مارکت‌پلیس B2B و B2C ساختمانی",
+    color: "from-purple-500/20 to-pink-500/20",
+    accent: "#8B5CF6",
+  },
+  {
+    title: "Kayak",
+    category: "Travel",
+    description: "پلتفرم جستجوی سفر و بلیط",
+    color: "from-emerald-500/20 to-teal-500/20",
+    accent: "#10B981",
+  },
+];
 
 export default function FeaturedWorks() {
   const pathname = usePathname();
@@ -132,33 +73,35 @@ export default function FeaturedWorks() {
   const t = translations[locale];
 
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-bg-alt)]">
+    <section className="py-20 md:py-32 bg-[var(--color-bg-alt)] [--section-card-bg:var(--color-bg)] [--section-card-bg-hover:var(--color-bg)] [--section-card-border:var(--color-border)]">
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
         >
           <div className="max-w-2xl">
-            <span className="text-sm font-medium text-[var(--color-primary)] uppercase tracking-wider">
+            <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] text-xs font-bold uppercase tracking-wider mb-5">
               {t.label}
             </span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 mb-4 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-black leading-tight mb-4">
               {t.title}
             </h2>
             <p className="text-lg text-[var(--color-text-muted)]">
-              {t.subtitle}
+              {t.description}
             </p>
           </div>
-          <Button variant="outline" href={`/${locale}/works`}>
-            {t.cta}
-          </Button>
+          <div className="hidden md:block">
+            <Button variant="outline" href={`/${locale}/works`}>
+              {t.viewAll}
+            </Button>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {t.projects.map((project, idx) => (
+          {projects.map((project, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 40 }}
@@ -168,58 +111,65 @@ export default function FeaturedWorks() {
             >
               <Link
                 href={`/${locale}/case-studies/${project.title.toLowerCase()}`}
-                className="group block"
+                className="block group"
+                data-cursor="view"
+                data-cursor-label={t.cursorLabel}
               >
-                <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--color-border)] transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
-                  {/* Placeholder تصویر */}
+                <div className="relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--section-card-bg)] border border-[var(--section-card-border)] hover:border-[var(--color-primary)] transition-all duration-500">
+                  {/* Visual Placeholder */}
                   <div
-                    className={`aspect-[4/3] bg-gradient-to-br ${project.gradient} relative overflow-hidden`}
+                    className={`aspect-[4/3] bg-gradient-to-br ${project.color} relative overflow-hidden`}
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white/90 font-black text-5xl md:text-6xl tracking-tight">
+                      <span
+                        className="text-5xl md:text-7xl font-black opacity-20 group-hover:scale-110 transition-transform duration-700"
+                        style={{ color: project.accent }}
+                      >
                         {project.title}
                       </span>
                     </div>
-                    {/* بج سال */}
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm text-white text-xs font-medium">
-                      {project.year}
+
+                    {/* Category Badge */}
+                    <div className="absolute top-5 right-5 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-bold">
+                      {project.category}
                     </div>
                   </div>
 
-                  {/* اطلاعات */}
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-[var(--color-primary)] font-medium">
-                        {project.category}
-                      </span>
-                      <span className="text-sm text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                        {t.viewCase}
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">
+                  {/* Content */}
+                  <div className="p-6 md:p-8">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-[var(--color-text-muted)]">
+                    <p className="text-[var(--color-text-muted)] text-sm mb-4">
                       {project.description}
                     </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
+                      {t.viewCase}
+                      <svg
+                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        <div className="md:hidden mt-10 text-center">
+          <Button variant="outline" href={`/${locale}/works`}>
+            {t.viewAll}
+          </Button>
         </div>
       </Container>
     </section>

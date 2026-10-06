@@ -7,4 +7,5 @@ export { default as MagneticButton } from "./MagneticButton";
 export { default as Marquee } from "./Marquee";
 export { default as SmoothScroll } from "./SmoothScroll";
 export { default as ScrollReveal } from "./ScrollReveal";
+export { default as CustomCursor } from "./CustomCursor";
 export { ThemeProvider, useTheme } from "./ThemeProvider";

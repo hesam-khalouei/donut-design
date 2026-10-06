@@ -378,3 +378,25 @@ button {
   border-top: 1px solid var(--color-border);
   margin: 3rem 0;
 }
+
+/* ---------- Custom Cursor ---------- */
+@media (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none;
+  }
+}
+
+/* روی موبایل، کورسور پیش‌فرض */
+@media (pointer: coarse) {
+  html,
+  body {
+    cursor: auto;
+  }
+}
