@@ -5,6 +5,8 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import BackToTop from "@/components/ui/BackToTop";
 
 const locales = ["fa", "en", "ar"] as const;
 type Locale = (typeof locales)[number];
@@ -35,6 +37,8 @@ export default async function LocaleLayout({
     <ThemeProvider>
       <LoadingScreen />
       <CustomCursor />
+      <ScrollProgress />
+      <BackToTop />
       <div
         lang={validLocale}
         dir={dirMap[validLocale]}

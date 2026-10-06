@@ -9,4 +9,7 @@ export { default as SmoothScroll } from "./SmoothScroll";
 export { default as ScrollReveal } from "./ScrollReveal";
 export { default as CustomCursor } from "./CustomCursor";
 export { default as LoadingScreen } from "./LoadingScreen";
+export { default as ScrollProgress } from "./ScrollProgress";
+export { default as BackToTop } from "./BackToTop";
+export { default as PageTransition } from "./PageTransition";
 export { ThemeProvider, useTheme } from "./ThemeProvider";
