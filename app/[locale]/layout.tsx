@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/ui/SmoothScroll";
@@ -15,6 +16,15 @@ const dirMap: Record<Locale, "rtl" | "ltr"> = {
   fa: "rtl",
   en: "ltr",
   ar: "rtl",
+};
+
+// ⚠️ metadata باید بیرون از کامپوننت باشه
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
 };
 
 export function generateStaticParams() {
